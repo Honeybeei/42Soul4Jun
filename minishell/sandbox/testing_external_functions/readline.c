@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 14:27:16 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/08 14:58:32 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/08 16:22:19 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/08 16:22:26 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+// IMPORTANT : must use -lreadline flag in compile command.
 int main(void)
 {
     char *input_str;
 
-    while (true)
+    for (size_t i = 0; i < 5; i++)
     {
-        input_str = readline(input_str);
-        printf("User just typed : %s", input_str);
+        input_str = readline("type : ");
+        add_history(input_str);
+        printf("User just typed : %s\n", input_str);
         free(input_str);
     }
     return (0);
