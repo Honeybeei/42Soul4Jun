@@ -1,0 +1,3 @@
+Minishell
+
+Allowed external functions
