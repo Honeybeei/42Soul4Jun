@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 20:16:40 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/09 00:33:07 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/09 20:48:59 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,130 @@ COMPILE_FLAGS_FOR_TEST = $(CC) $(EXTRAFLAGS) $(INC_FLAGS)	# without -WWW
 LINKING_FLAGS = $(CC) $(EXTRAFLAGS) $(CFLAGS)
 
 # **************************************************************************** #
+
+# main_function
+MAIN_FUNCTION_DIR = $(SRC_DIR)main_function/
+
+MAIN_FUNCTION_SRC_FILE = minishell_main.c
+
+MAIN_FUNCTION_SRCS = $(addprefix $(MAIN_FUNCTION_DIR), $(MAIN_FUNCTION_SRC_FILE))
+
+# utils_and_etc
+UTILS_AND_ETC_DIR = $(SRC_DIR)utils_and_etc/
+
+UTILS_AND_ETC_SRC_FILE = makefile_test_functions.c
+
+UTILS_AND_ETC_SRCS = $(addprefix $(UTILS_AND_ETC_DIR), $(UTILS_AND_ETC_SRC_FILE))
+
+# SRCS -> add all *_SRCS here.
+SRCS_WITHOUT_MAIN = \
+		$(UTILS_AND_ETC_SRCS)
+
+SRCS = $(MAIN_FUNCTION_SRCS) $(SRCS_WITHOUT_MAIN)
+
+# What I want to make is ...... first, If I add another directory, I want to 
+# make it way easier to modify makefile. Privious makefile was so complicated. 
+# Second, I want to put all object files in to a single directory(./obj/).
+
+# It is getting boring so lets do this later. TODO!!
+
+
+
+
+
+# # **************************************************************************** # 
+
+# # utils_and_etc
+
+# UTILS_AND_ETC_DIR = ./utils_and_etc/
+
+# UTILS_AND_ETC_SRC_DIR = $(SRC_DIR)$(UTILS_AND_ETC_DIR)
+# UTILS_AND_ETC_SRC_FILE = \
+# 		makefile_test_functions.c
+
+# UTILS_AND_ETC_SRCS = \
+# 		$(addprefix $(UTILS_AND_ETC_SRC_DIR), \
+# 		$(UTILS_AND_ETC_SRC_FILE))
+
+# UTILS_AND_ETC_OBJ_DIR = $(OBJ_DIR)$(UTILS_AND_ETC_DIR)
+# UTILS_AND_ETC_OBJ_FILE = $(UTILS_AND_ETC_SRC_FILE:.c=.o)
+# UTILS_AND_ETC_OBJS = \
+# 		$(addprefix $(UTILS_AND_ETC_OBJ_DIR), \
+# 		$(UTILS_AND_ETC_OBJ_FILE))
+
+# # **************************************************************************** #
+
+# OBJS_WITHOUT_MAIN = \
+# 		$(UTILS_AND_ETC_OBJS)
+
+# OBJS = $(MAIN_FUNCTION_OBJS) $(OBJS_WITHOUT_MAIN)
+
+# # **************************************************************************** #
+
+# # main rules
+
+# all : $(NAME)
+# 	@printf "$(Red)\n[ PIPEX compile finished!!] \n$(Color_Off)"
+# ifdef LETS_DEBUG
+# 	@printf "$(Red)\n[ DEBUGGING MODE ENABLED!!] \n$(Color_Off)"
+# endif
+
+# $(NAME) : $(OBJS)
+# 	@make mylib
+# 	$(CC) $(CFLAGS) -o $@ $^ $(MY_LIB_DIR)$(MY_LIB_ARC)
+
+# $(MAIN_FUNCTION_OBJ_DIR)%.o : $(MAIN_FUNCTION_SRC_DIR)%.c
+# 	@mkdir -p $(MAIN_FUNCTION_OBJ_DIR)
+# 	$(CC) $(CFLAGS) $(DBFLAG) $(INCLUDE) -c $< -o $@
+
+# $(UTILS_AND_ETC_OBJ_DIR)%.o : $(UTILS_AND_ETC_SRC_DIR)%.c
+# 	@mkdir -p $(UTILS_AND_ETC_OBJ_DIR)
+# 	$(CC) $(CFLAGS) $(DBFLAG) $(INCLUDE) -c $< -o $@
+
+# # **************************************************************************** #
+
+# # test
+
+# TEST_NAME = pipex_test
+# TEST_SRC_FILE = \
+# 		pipex_test_main.c
+
+# TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE));
+
+# TEST_OBJS = $(TEST_SRCS:.c=.o)
+
+# test : mylib $(TEST_NAME)
+# 	@printf "$(Red)\n[ PIPEX TEST VER compile finished!!] \n$(Color_Off)"
+# 	@./$(TEST_NAME)
+
+# $(TEST_NAME) : $(OBJS_WITHOUT_MAIN) $(TEST_OBJS)
+# 	$(CC) $(DBFLAG) $(MY_LIB) -o $@ $^
+
+# $(TEST_DIR)%.o : $(TEST_DIR)%.c
+# 	$(CC) $(DBFLAG) $(INCLUDE) -c $< -o $@
+
+# **************************************************************************** #
+
+debug : clean
+	LETS_DEBUG=1 make
+
+clean :
+	rm -rf ./obj
+	rm -rf ./test/*.o
+
+fclean : clean
+	@make fclean -C $(MY_LIB_DIR)
+	rm -f $(NAME)
+	rm -f $(TEST_NAME)
+	rm -f infile.txt outfile.txt
+
+re : fclean all
+
+mylib :
+	@make -C $(MY_LIB_DIR)
+
+.PONEY : all test clean fclean re mylib
+
 
 # main_function
 

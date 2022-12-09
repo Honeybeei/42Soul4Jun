@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:22:19 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/08 19:33:28 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/09 19:05:45 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 /**
  * @brief This function reads a line from the terminal and returns it. The line 
- * returned is malloced. Therefore it should be freed when finished. If EOF 
+ * returned is malloced. Therefore it SHOULD BE FREED when finished. If EOF 
  * encountered in reading process there should be two possible cases. First, if 
  * EOF encountered and the line is empty, NULL will be returned. If the line is 
  * not empty, It will be treaded as a new line. 
