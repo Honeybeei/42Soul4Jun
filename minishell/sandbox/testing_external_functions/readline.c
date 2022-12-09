@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:22:19 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/08 16:22:26 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/08 19:33:28 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,16 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-// IMPORTANT : must use -lreadline flag in compile command.
+/**
+ * @brief This function reads a line from the terminal and returns it. The line 
+ * returned is malloced. Therefore it should be freed when finished. If EOF 
+ * encountered in reading process there should be two possible cases. First, if 
+ * EOF encountered and the line is empty, NULL will be returned. If the line is 
+ * not empty, It will be treaded as a new line. 
+ * 
+ * IMPORTANT : must use -lreadline flag in compile command.
+ */
+
 int main(void)
 {
     char *input_str;
@@ -26,7 +35,7 @@ int main(void)
     {
         input_str = readline("type : ");
         add_history(input_str);
-        printf("User just typed : %s\n", input_str);
+        printf("User just typed [%zu]: %s\n", i, input_str);
         free(input_str);
     }
     return (0);
