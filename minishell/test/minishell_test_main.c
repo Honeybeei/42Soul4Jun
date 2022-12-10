@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   minishell_test_main.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 20:11:29 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/10 12:49:25 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/10 14:21:19 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/10 14:23:45 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell_test.h"
 
-#include <stdio.h>	// printf()
-
-// makefile_test_functions.c
-void	say_hello(int n);
-
-#endif
+int	main(void)
+{
+	printf("Hello world!\n");
+	return (0);
+}
