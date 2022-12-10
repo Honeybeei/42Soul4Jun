@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   makefile_test_functions.c                          :+:      :+:    :+:   */
+/*   _minishell_main.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 20:13:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/08 20:16:53 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/08 20:11:11 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/10 18:46:17 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "../../inc/minishell.h"
 
-/* ************************************************************************** */
+// int	main(int argc, char **argv, char **envp)
+// {
+	
+// }
 
-/**
- * @brief Say hello n times. 
- * 
- * @param n 
- */
-void	say_hello(int n)
+int	main(void)
 {
-	int	idx;
-
-	idx = 0;
-	while (idx < n)
-	{
-		printf("Hello world!!\n");
-		idx++;
-	}
-	return ;
+	say_hello(5);
+	return (0);
 }
-
-/* ************************************************************************** */
