@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:49:57 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/13 16:22:19 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/13 20:19:47 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_input	*get_input_from_user(void)
 	return (user_input);
 }
 
+// TOKENIZE -> parse TOKENS maybe?
 t_input	*split_readline_result(char *readline_result, char *dividers)
 {
 	/**
