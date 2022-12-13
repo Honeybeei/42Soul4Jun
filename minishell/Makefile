@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/08 20:16:40 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/10 18:54:58 by seoyoo           ###   ########.fr        #
+#    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
+#    Updated: 2022/12/13 14:42:00 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # color setting
 Color_Off = \033[0m		# Text Reset
 Black = \033[0;30m		# Black
-Green = \033[0;31m		# Green
+Red = \033[0;31m		# Red
 Green = \033[0;32m		# Green
 Yellow = \033[0;33m		# Yellow
 Blue = \033[0;34m		# Blue
@@ -26,55 +26,143 @@ White = \033[0;37m		# White
 # target
 NAME = minishell
 
-# compiler
+# compiling options
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-DBFLAG = -g3
-EXTRAFLAGS =
-# EXTRAFLAGS = -lreadline
+DBFLAG = -g
+RDLINE = -lreadline
+OPTIMMIZATION = -O3
+INC = -I ./
 
-# basic directories
+# directories
 SRC_DIR = ./src/
+INC_DIR = ./inc/
 OBJ_DIR = ./obj/
 TEST_DIR = ./test/
 
-# include
-INC_DIR = ./inc/
-INC_FLAGS = -I $(INC_DIR)
-
-COMPILE_FLAGS = $(CC) $(EXTRAFLAGS) $(CFLAGS) $(INC_FLAGS)
-COMPILE_FLAGS_FOR_TEST = $(CC) $(DBFLAG) $(EXTRAFLAGS) $(INC_FLAGS)	# without -WWW
-LINKING_FLAGS = $(CC) $(CFLAGS)
+# COMPILE = $(CC) $(CFLAGS) $(OPTIMMIZATION) # -> this will be the final flag
+COMPILE = $(CC) $(CFLAGS) $(DBFLAG)
+# LINKING = $(CC) $(CFLAGS) $(INC)  # incase for error
+LINKING = $(CC) $(CFLAGS) $(RDLINE)
 
 # **************************************************************************** #
 
-SRC_FILE = _minishell_main.c test_functions.c
+# main_function
 
-SRCS = $(addprefix $(SRC_DIR), $(SRC_FILE))
-OBJS = $(addprefix $(OBJ_DIR), $(SRC_FILE:.c=.o))
+MAIN_FUNCTION_DIR = main_function/
+
+MAIN_FUNCTION_SRC_DIR = $(SRC_DIR)$(MAIN_FUNCTION_DIR)
+
+MAIN_FUNCTION_SRC_FILE = \
+		main.c 
+
+MAIN_FUNCTION_SRCS = \
+		$(addprefix $(MAIN_FUNCTION_SRC_DIR), \
+		$(MAIN_FUNCTION_SRC_FILE))
+
+MAIN_FUNCTION_OBJ_DIR = $(OBJ_DIR)$(MAIN_FUNCTION_DIR)
+MAIN_FUNCTION_OBJ_FILE = $(MAIN_FUNCTION_SRC_FILE:.c=.o)
+MAIN_FUNCTION_OBJS = $(addprefix $(MAIN_FUNCTION_OBJ_DIR), $(MAIN_FUNCTION_OBJ_FILE))
+OBJS += $(MAIN_FUNCTION_OBJS)
+
+# **************************************************************************** # 
+
+# etc
+
+ETC_DIR = etc/
+
+# etc - src
+ETC_SRC_DIR = $(SRC_DIR)$(ETC_DIR)
+ETC_SRC_FILE = \
+		blabla1.c \
+		user_interface.c
+
+ETC_SRCS = $(addprefix $(ETC_SRC_DIR), $(ETC_SRC_FILE))
+
+ETC_OBJ_DIR = $(OBJ_DIR)$(ETC_DIR)
+ETC_OBJ_FILE = $(ETC_SRC_FILE:.c=.o)
+ETC_OBJS = $(addprefix $(ETC_OBJ_DIR), $(ETC_OBJ_FILE))
+OBJS += $(ETC_OBJS)
 
 # **************************************************************************** #
+
+# object_management
+
+OBJECT_MANAGEMENT_DIR = object_management/
+
+# OBJECT_MANAGEMENT - src
+OBJECT_MANAGEMENT_SRC_DIR = $(SRC_DIR)$(OBJECT_MANAGEMENT_DIR)
+OBJECT_MANAGEMENT_SRC_FILE = \
+        manage_t_input.c
+
+OBJECT_MANAGEMENT_SRCS = $(addprefix $(OBJECT_MANAGEMENT_SRC_DIR), $(OBJECT_MANAGEMENT_SRC_FILE))
+
+OBJECT_MANAGEMENT_OBJ_DIR = $(OBJ_DIR)$(OBJECT_MANAGEMENT_DIR)
+OBJECT_MANAGEMENT_OBJ_FILE = $(OBJECT_MANAGEMENT_SRC_FILE:.c=.o)
+OBJECT_MANAGEMENT_OBJS = $(addprefix $(OBJECT_MANAGEMENT_OBJ_DIR), $(OBJECT_MANAGEMENT_OBJ_FILE))
+OBJS += $(OBJECT_MANAGEMENT_OBJS)
+
+# **************************************************************************** #
+
+# main rules
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(LINKING_FLAGS) -o $@ $^
+	$(LINKING) -o $@ $^
 
-$(OBJS) : $(SRCS)
-	@mkdir -p $(OBJ_DIR)
-	$(COMPILE_FLAGS) -o $@ -c $<
+# add rules to compile src file in each folders
+
+$(MAIN_FUNCTION_OBJ_DIR)%.o : $(MAIN_FUNCTION_SRC_DIR)%.c
+	@mkdir -p $(MAIN_FUNCTION_OBJ_DIR)
+	$(COMPILE) -c $< -o $@ 
+
+$(ETC_OBJ_DIR)%.o : $(ETC_SRC_DIR)%.c
+	@mkdir -p $(ETC_OBJ_DIR)
+	$(COMPILE) -c $< -o $@
+
+$(OBJECT_MANAGEMENT_OBJ_DIR)%.o : $(OBJECT_MANAGEMENT_SRC_DIR)%.c
+	@mkdir -p $(OBJECT_MANAGEMENT_OBJ_DIR)
+	$(COMPILE) -c $< -o $@
+
+# **************************************************************************** #
+
+# test
+
+TEST_NAME = minishell_test.out
+TEST_SRC_FILE = \
+		minishell_test_main.c \
+
+TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE))
+
+TEST_OBJS = $(TEST_SRCS:.c=.o)
+
+# add $(*_OBJS) for unit-test
+TESTING_TARGET = $(ETC_OBJS)
+
+test : $(TEST_NAME)
+	@./$(TEST_NAME)
+
+$(TEST_NAME) : $(TEST_OBJS) $(TESTING_TARGET)
+	$(LINKING) -o $@ $^
+
+# test src file compile
+$(TEST_DIR)%.o : $(TEST_DIR)%.c
+	$(COMPILE) -c $< -o $@
+
+# **************************************************************************** #
 
 clean :
 	rm -rf $(OBJ_DIR)
+	rm -f $(TEST_OBJS)
 
 fclean : clean
 	rm -f $(NAME)
+	rm -f $(TEST_NAME)
 
 re : fclean all
 
-norm :
-	@norminette ./inc ./src
+run : all
+	@./$(NAME)
 
-.PONEY : all clean fclean re norm
-
-# # **************************************************************************** #
+.PONEY : all test clean fclean re run

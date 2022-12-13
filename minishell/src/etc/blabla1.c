@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _minishell_main.c                                  :+:      :+:    :+:   */
+/*   blabla1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 20:11:11 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/10 18:46:17 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/12 14:26:41 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/12 14:52:58 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-// int	main(int argc, char **argv, char **envp)
-// {
-	
-// }
-
-int	main(void)
+void	say_hello(int n)
 {
-	say_hello(5);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		printf("[%d] Hello world!!\n", i + 1);
+		i++;
+	}
 }
