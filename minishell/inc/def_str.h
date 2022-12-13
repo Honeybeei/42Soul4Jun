@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   def_str.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/13 16:00:06 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/13 15:37:06 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/13 15:43:27 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#ifndef DEF_STR_H
+# define DEF_STR_H
 
+# define PROMPT_STR "Jsh -> "
 
-int	main(void)
-{
-	t_input	*user_input;
-
-	enter_shell();
-	while (true)
-	{
-		user_input = get_input_from_user();
-		// test
-		if (user_input != NULL)
-			printf("user input is not null\n");
-		else
-			printf("user input is null\n");
-		// test
-
-		// TODO : Tokenize user_input(t_input) and terminate user_input. 
-
-		// TODO : Execute Tokenized command. 
-	}
-	return (0);
-}
+#endif

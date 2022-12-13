@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:11:42 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/12 19:36:47 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/13 15:34:56 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 int main(void)
 {
 	printf("\n\nEntered Testing area\n\n");
-	say_hello(5);
 	return (0);
 }

@@ -2,5 +2,8 @@
     "files.associations": {
         "readline.h": "c",
         "stdbool.h": "c"
-    }
+    },
+    "cSpell.words": [
+        "seoyoo"
+    ]
 }

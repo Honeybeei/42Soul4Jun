@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/13 14:42:00 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/13 15:57:22 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ ETC_DIR = etc/
 ETC_SRC_DIR = $(SRC_DIR)$(ETC_DIR)
 ETC_SRC_FILE = \
 		blabla1.c \
+		get_input.c \
 		user_interface.c
 
 ETC_SRCS = $(addprefix $(ETC_SRC_DIR), $(ETC_SRC_FILE))
@@ -138,7 +139,7 @@ TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE))
 TEST_OBJS = $(TEST_SRCS:.c=.o)
 
 # add $(*_OBJS) for unit-test
-TESTING_TARGET = $(ETC_OBJS)
+TESTING_TARGET = $(OBJECT_MANAGEMENT_OBJS)
 
 test : $(TEST_NAME)
 	@./$(TEST_NAME)

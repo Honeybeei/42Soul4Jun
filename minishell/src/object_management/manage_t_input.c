@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:28:37 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/13 15:26:33 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/13 15:31:53 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_input	*init_t_input(void)
 	t_input	*input;
 
 	input = malloc(sizeof(t_input));
-	if (t_input == NULL)
+	if (input == NULL)
 		return (NULL);
 	input->str_arr_ = NULL;
 	input->str_cnt_ = -1;

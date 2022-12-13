@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/13 14:46:26 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/13 15:52:19 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <readline/history.h>	// add_history()
 
 # include "ascii_art.h"
+# include "def_str.h"
 
 /* ************************************************************************** */
 
@@ -44,6 +45,9 @@ void	say_hello(int n);
 
 //		user_interface.c
 void	enter_shell(void);
+
+//		get_input.c
+t_input	*get_input_from_user(void);
 
 /* ************************************************************************** */
 
