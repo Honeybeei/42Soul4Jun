@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/13 15:57:22 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/14 14:55:33 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -165,5 +165,8 @@ re : fclean all
 
 run : all
 	@./$(NAME)
+
+norm : 
+	@norminette ./src ./inc
 
 .PONEY : all test clean fclean re run

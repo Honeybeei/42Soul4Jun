@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:49:57 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/13 20:19:47 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/14 14:56:38 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_input	*split_readline_result(char *readline_result, char *dividers)
 	 * 4. single char
 	 * 5. no char
 	 * 6. 
-	 * 
+	 *  TODO : need to read 
 	 */
 	char	*char_ptr;
 
