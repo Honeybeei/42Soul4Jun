@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/14 14:55:33 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/15 13:02:09 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,24 @@ OBJS += $(ETC_OBJS)
 
 # **************************************************************************** #
 
+# libft_functions
+
+LIBFT_FUNCTIONS_DIR = libft_functions/
+
+# LIBFT_FUNCTIONS - src
+LIBFT_FUNCTIONS_SRC_DIR = $(SRC_DIR)$(LIBFT_FUNCTIONS_DIR)
+LIBFT_FUNCTIONS_SRC_FILE = \
+        str_functions.c
+
+LIBFT_FUNCTIONS_SRCS = $(addprefix $(LIBFT_FUNCTIONS_SRC_DIR), $(LIBFT_FUNCTIONS_SRC_FILE))
+
+LIBFT_FUNCTIONS_OBJ_DIR = $(OBJ_DIR)$(LIBFT_FUNCTIONS_DIR)
+LIBFT_FUNCTIONS_OBJ_FILE = $(LIBFT_FUNCTIONS_SRC_FILE:.c=.o)
+LIBFT_FUNCTIONS_OBJS = $(addprefix $(LIBFT_FUNCTIONS_OBJ_DIR), $(LIBFT_FUNCTIONS_OBJ_FILE))
+OBJS += $(LIBFT_FUNCTIONS_OBJS)
+
+# **************************************************************************** #
+
 # object_management
 
 OBJECT_MANAGEMENT_DIR = object_management/
@@ -102,6 +120,24 @@ OBJECT_MANAGEMENT_OBJ_DIR = $(OBJ_DIR)$(OBJECT_MANAGEMENT_DIR)
 OBJECT_MANAGEMENT_OBJ_FILE = $(OBJECT_MANAGEMENT_SRC_FILE:.c=.o)
 OBJECT_MANAGEMENT_OBJS = $(addprefix $(OBJECT_MANAGEMENT_OBJ_DIR), $(OBJECT_MANAGEMENT_OBJ_FILE))
 OBJS += $(OBJECT_MANAGEMENT_OBJS)
+
+# **************************************************************************** #
+
+# tokenizer
+
+TOKENIZER_DIR = tokenizer/
+
+# TOKENIZER - src
+TOKENIZER_SRC_DIR = $(SRC_DIR)$(TOKENIZER_DIR)
+TOKENIZER_SRC_FILE = \
+        str_functions.c
+
+TOKENIZER_SRCS = $(addprefix $(TOKENIZER_SRC_DIR), $(TOKENIZER_SRC_FILE))
+
+TOKENIZER_OBJ_DIR = $(OBJ_DIR)$(TOKENIZER_DIR)
+TOKENIZER_OBJ_FILE = $(TOKENIZER_SRC_FILE:.c=.o)
+TOKENIZER_OBJS = $(addprefix $(TOKENIZER_OBJ_DIR), $(TOKENIZER_OBJ_FILE))
+OBJS += $(TOKENIZER_OBJS)
 
 # **************************************************************************** #
 
@@ -122,9 +158,17 @@ $(ETC_OBJ_DIR)%.o : $(ETC_SRC_DIR)%.c
 	@mkdir -p $(ETC_OBJ_DIR)
 	$(COMPILE) -c $< -o $@
 
+$(LIBFT_FUNCTIONS_OBJ_DIR)%.o : $(LIBFT_FUNCTIONS_SRC_DIR)%.c
+	@mkdir -p $(LIBFT_FUNCTIONS_OBJ_DIR)
+	$(COMPILE) -c $< -o $@ 
+
 $(OBJECT_MANAGEMENT_OBJ_DIR)%.o : $(OBJECT_MANAGEMENT_SRC_DIR)%.c
 	@mkdir -p $(OBJECT_MANAGEMENT_OBJ_DIR)
 	$(COMPILE) -c $< -o $@
+
+$(TOKENIZER_OBJ_DIR)%.o : $(TOKENIZER_SRC_DIR)%.c
+	@mkdir -p $(TOKENIZER_OBJ_DIR)
+	$(COMPILE) -c $< -o $@ 
 
 # **************************************************************************** #
 
@@ -139,9 +183,9 @@ TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE))
 TEST_OBJS = $(TEST_SRCS:.c=.o)
 
 # add $(*_OBJS) for unit-test
-TESTING_TARGET = $(OBJECT_MANAGEMENT_OBJS)
+TESTING_TARGET = $(LIBFT_FUNCTIONS_OBJS)
 
-test : $(TEST_NAME)
+test : clean $(TEST_NAME)
 	@./$(TEST_NAME)
 
 $(TEST_NAME) : $(TEST_OBJS) $(TESTING_TARGET)

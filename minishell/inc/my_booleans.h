@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   def_str.h                                          :+:      :+:    :+:   */
+/*   my_booleans.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 15:37:06 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/16 16:13:54 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/15 14:06:59 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/15 20:02:52 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEF_STR_H
-# define DEF_STR_H
+#ifndef MY_BOOLEANS_H
+# define MY_BOOLEANS_H
 
-# define PROMPT_STR "Jsh -> "
-# define META_DELIMITER "__"
-# define CTRL_OPERATOR "||__&&__&__;__;;__;&__;;&__|__|&__(__)"
-# define META_CHARACTER " __    __"
+typedef enum e_my_booleans
+{
+	yes_err_ = -1,
+	no_err_ = 1,
+	head_ = -1,
+	tail_ = 1,
+	down_ = -1,
+	up_ = 1
+}	t_bool;
 
 #endif

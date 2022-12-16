@@ -5,17 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 15:37:06 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/16 16:13:54 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/16 16:14:44 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/16 16:18:11 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEF_STR_H
 # define DEF_STR_H
 
-# define PROMPT_STR "Jsh -> "
-# define META_DELIMITER "__"
-# define CTRL_OPERATOR "||__&&__&__;__;;__;&__;;&__|__|&__(__)"
-# define META_CHARACTER " __    __"
+# define CONTROL_OPERATOR_CNT 11
+# define CONTROL_OPERATOR_ARRAY {"||", "&&", "&", ";", ";;", ";&", ";;&", "|", "|&", "(", ")"}
 
 #endif

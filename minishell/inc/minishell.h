@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/14 14:56:27 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/15 14:11:38 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,9 @@
 
 # include "ascii_art.h"
 # include "def_str.h"
+# include "my_booleans.h"
 
 /* ************************************************************************** */
-
-typedef enum e_my_booleans
-{
-	no_err_ = 0,
-	yes_err_ = -1
-}	t_bool;
 
 typedef struct s_user_input
 {
@@ -56,8 +51,6 @@ t_input	*get_input_from_user(void);
 //		manage_t_input
 t_input	*init_t_input(void);
 int		terminate_t_input(t_input *input);
-
-/* ************************************************************************** */
 
 /* ************************************************************************** */
 
