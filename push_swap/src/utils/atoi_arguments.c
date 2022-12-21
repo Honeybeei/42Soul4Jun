@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   atoi_arguments.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/21 15:03:33 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/21 15:01:02 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/21 15:37:39 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../inc/push_swap.h"
 
-// Libraries for external functions
-#include <stdio.h>
-
-#include "../my_lib/inc/libft.h"
-
-typedef enum e_my_booleans
+int	*atoi_arguments(int argc, char **argv)
 {
-	valid_ = 0,
-	invalid_
-}	t_bool;
+	int		*num_arr;
+	int		idx;
 
-//	utils
-//		makefile_test.c
-void	say_hello(int n);
+	num_arr = malloc(sizeof(int) * (argc - 1));
+	if (num_arr == NULL)
+		return (NULL);
+	idx = 1;
+	while (idx < argc)
+	{
+		if (check_is_num(argv[idx]) == invalid_)
+		{
+			free(num_arr);
+			return (NULL);
+		}
+		num_arr[idx - 1] = ft_atoi(argv[idx]);
+		idx++;
+	}
+	
+}
 
-//		error_management.c
-int		print_error(void);
-
-//		atoi_arguments.c
-int	*atoi_arguments(int argc, char **argv);
-
-
-#endif
+check_is_num

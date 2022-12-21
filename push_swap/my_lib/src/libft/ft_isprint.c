@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/21 15:03:33 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/10 15:52:58 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/08/03 21:39:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../inc/libft.h"
 
-// Libraries for external functions
-#include <stdio.h>
+// Discription
+// Tests for an printalbe character (which is any character between octal 040 
+// and octal 0176 inclusive)
 
-#include "../my_lib/inc/libft.h"
+// 1st Parameter :	Integer to be checked
+// Return values :	Return 1 if input 1 is printalbe character. Return 0 if its 
+//					not.
 
-typedef enum e_my_booleans
+int	ft_isprint(int c)
 {
-	valid_ = 0,
-	invalid_
-}	t_bool;
-
-//	utils
-//		makefile_test.c
-void	say_hello(int n);
-
-//		error_management.c
-int		print_error(void);
-
-//		atoi_arguments.c
-int	*atoi_arguments(int argc, char **argv);
-
-
-#endif
+	if (040 <= c && c <= 0176)
+		return (1);
+	return (0);
+}

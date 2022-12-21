@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/21 15:03:33 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 21:29:16 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/08/03 21:41:52 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../inc/libft.h"
 
-// Libraries for external functions
-#include <stdio.h>
+// Discription
+// Delete(free) the node(1st Parameter) by using del(2nd Parameter)
 
-#include "../my_lib/inc/libft.h"
+// 1st Parameter :	The node which it's content(variable) should be deleted.
+// 2nd Parameter :	Function to delete the content of the node. 
+// Return values :	None. 
 
-typedef enum e_my_booleans
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	valid_ = 0,
-	invalid_
-}	t_bool;
-
-//	utils
-//		makefile_test.c
-void	say_hello(int n);
-
-//		error_management.c
-int		print_error(void);
-
-//		atoi_arguments.c
-int	*atoi_arguments(int argc, char **argv);
-
-
-#endif
+	del(lst->content);
+	free(lst);
+}

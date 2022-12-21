@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 22:40:00 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/10 01:50:08 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/21 14:46:33 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,9 +106,9 @@ all : $(NAME)
 #	linking
 $(NAME) : $(OBJS)
 	@make mylib
-	@printf "$(Green)\n[ mylib & minilibx compile finished!!] \n$(Color_Off)"
+	@printf "$(Green)\n[ mylib compile finished!!] \n$(Color_Off)"
 	$(LINKING_FLAGS) -o $@ $^
-	@printf "$(Blue)\n[ ENJOY FDF!! ]\n$(Color_Off)"
+	@printf "$(Blue)\n[ ENJOY PUSH_SWAP!! ]\n$(Color_Off)"
 
 #	compiling
 $(MAIN_FUNCTION_OBJ_DIR)%.o : $(MAIN_FUNCTION_SRC_DIR)%.c
@@ -123,20 +123,18 @@ $(UTILS_OBJ_DIR)%.o : $(UTILS_SRC_DIR)%.c
 
 # test
 
-TEST_NAME = fdf_test
+TEST_NAME = push_swap_test
 TEST_SRC_FILE = \
-		fdf_test_main.c \
-		print_map_data.c
 
 TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE));
 
 TEST_OBJS = $(TEST_SRCS:.c=.o)
 
-#	Change map file here
-TEST_ARGS = ./maps/42.fdf
+#	Change arguments file here
+TEST_ARGS = 
 
-test : mylib minilibx $(TEST_NAME)
-	@printf "$(Green)\n[ FDF TEST VER compile finished!!] \n\n\n$(Color_Off)"
+test : mylib clean $(TEST_NAME)
+	@printf "$(Green)\n[ PUSH_SWAP TEST VER compile finished!!] \n\n\n$(Color_Off)"
 	@./$(TEST_NAME) $(TEST_ARGS)
 
 $(TEST_NAME) : $(OBJS_WITHOUT_MAIN) $(TEST_OBJS)
@@ -147,17 +145,11 @@ $(TEST_DIR)%.o : $(TEST_DIR)%.c
 
 # **************************************************************************** #
 
-# Works well in M1 processor without using M1_COMPILE_CMD...... 
-# m1 : clean
-# 	MAKE_IN_M1=1 make
-
 clean :
 	rm -rf $(OBJ_DIR)
-	rm -rf $(TEST_DIR)*.o
+	rm -rf $(TEST_OBJS)
 
 fclean : clean
-	@make fclean -C $(MY_LIB_DIR)
-	@make clean -C $(MLX_DIR)
 	rm -f $(NAME)
 	rm -f $(TEST_NAME)
 
@@ -165,13 +157,13 @@ re : fclean all
 
 ree : clean all
 
+run : ree
+	./$(NAME)
+
 mylib :
 	@make -C $(MY_LIB_DIR)
-
-minilibx : 
-	@make -C $(MLX_DIR)
 
 norm :
 	@norminette ./inc ./my_lib ./src
 
-.PONEY : all test clean fclean re ree mylib minilibx norm
+.PONEY : all test clean fclean re ree run mylib norm

@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/21 15:03:33 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 19:52:37 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/08/03 21:41:09 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../inc/libft.h"
 
-// Libraries for external functions
-#include <stdio.h>
+// Discription
+// Outputs the string s(1st Parameter) to the givn file descriptor. 
 
-#include "../my_lib/inc/libft.h"
+// 1st Parameter :	The string to output.
+// 2nd Parameter :	The file descriptor on which to write. 
+// Return values :	None. 
 
-typedef enum e_my_booleans
+void	ft_putstr_fd(char *s, int fd)
 {
-	valid_ = 0,
-	invalid_
-}	t_bool;
+	size_t	str_len;
 
-//	utils
-//		makefile_test.c
-void	say_hello(int n);
-
-//		error_management.c
-int		print_error(void);
-
-//		atoi_arguments.c
-int	*atoi_arguments(int argc, char **argv);
-
-
-#endif
+	str_len = ft_strlen(s);
+	write(fd, s, str_len);
+}

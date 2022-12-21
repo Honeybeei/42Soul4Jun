@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/21 15:03:33 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 21:09:30 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/08/03 21:41:54 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../inc/libft.h"
 
-// Libraries for external functions
-#include <stdio.h>
+// Discription
+// Adds the node 'new'(2nd Parameter) at the end of the list. 
 
-#include "../my_lib/inc/libft.h"
+// 1st Parameter :	The address of a pointer to the first link of a list. 
+// 2nd Parameter :	The address of a pointer to the node to be added to the list
+// Return values :	None. 
 
-typedef enum e_my_booleans
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	valid_ = 0,
-	invalid_
-}	t_bool;
-
-//	utils
-//		makefile_test.c
-void	say_hello(int n);
-
-//		error_management.c
-int		print_error(void);
-
-//		atoi_arguments.c
-int	*atoi_arguments(int argc, char **argv);
-
-
-#endif
+	if (*lst == NULL)
+		*lst = new;
+	else
+		ft_lstlast(*lst)->next = new;
+}

@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/21 15:03:33 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 21:03:39 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/08/03 21:41:51 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../inc/libft.h"
 
-// Libraries for external functions
-#include <stdio.h>
+// Discription
+// Returns the last Node of the list.
 
-#include "../my_lib/inc/libft.h"
+// 1st Parameter :	The beginning node if the list
+// Return values :	Last node of the list. 
 
-typedef enum e_my_booleans
+t_list	*ft_lstlast(t_list *lst)
 {
-	valid_ = 0,
-	invalid_
-}	t_bool;
+	t_list	*node_p;
 
-//	utils
-//		makefile_test.c
-void	say_hello(int n);
-
-//		error_management.c
-int		print_error(void);
-
-//		atoi_arguments.c
-int	*atoi_arguments(int argc, char **argv);
-
-
-#endif
+	if (lst == NULL)
+		return (NULL);
+	node_p = lst;
+	while (node_p->next != NULL)
+		node_p = node_p->next;
+	return (node_p);
+}

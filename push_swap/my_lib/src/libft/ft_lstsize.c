@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/21 15:03:33 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 20:56:20 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/08/03 21:41:49 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../../inc/libft.h"
 
-// Libraries for external functions
-#include <stdio.h>
+// Discription
+// Counts the number of nodes in a list(1st Parameter)
 
-#include "../my_lib/inc/libft.h"
+// 1st Parameter :	Head node of the list.
+// Return values :	Node count.
 
-typedef enum e_my_booleans
+int	ft_lstsize(t_list *lst)
 {
-	valid_ = 0,
-	invalid_
-}	t_bool;
+	t_list	*node_p;
+	size_t	count;
 
-//	utils
-//		makefile_test.c
-void	say_hello(int n);
-
-//		error_management.c
-int		print_error(void);
-
-//		atoi_arguments.c
-int	*atoi_arguments(int argc, char **argv);
-
-
-#endif
+	node_p = lst;
+	count = 0;
+	while (node_p != NULL)
+	{
+		count++;
+		node_p = node_p->next;
+	}
+	return (count);
+}
