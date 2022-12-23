@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 22:40:00 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/21 14:46:33 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/22 23:12:03 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,8 @@ UTILS_DIR = ./utils/
 
 UTILS_SRC_DIR = $(SRC_DIR)$(UTILS_DIR)
 UTILS_SRC_FILE = \
+		error_management.c \
+		get_arguments.c \
 		makefile_test.c
 
 UTILS_SRCS = \
