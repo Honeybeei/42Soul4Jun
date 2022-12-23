@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 22:40:00 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/22 23:12:03 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/23 16:24:27 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,9 @@ UTILS_SRC_DIR = $(SRC_DIR)$(UTILS_DIR)
 UTILS_SRC_FILE = \
 		error_management.c \
 		get_arguments.c \
-		makefile_test.c
+		makefile_test.c \
+		object_management_1.c \
+		object_management_2.c
 
 UTILS_SRCS = \
 		$(addprefix $(UTILS_SRC_DIR), \
@@ -128,7 +130,7 @@ $(UTILS_OBJ_DIR)%.o : $(UTILS_SRC_DIR)%.c
 TEST_NAME = push_swap_test
 TEST_SRC_FILE = \
 
-TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE));
+TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE))
 
 TEST_OBJS = $(TEST_SRCS:.c=.o)
 
@@ -152,6 +154,7 @@ clean :
 	rm -rf $(TEST_OBJS)
 
 fclean : clean
+	@make -C $(MY_LIB_DIR) fclean
 	rm -f $(NAME)
 	rm -f $(TEST_NAME)
 
