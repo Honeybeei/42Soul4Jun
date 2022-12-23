@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 22:40:00 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/23 16:24:27 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/23 21:07:03 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,6 +129,8 @@ $(UTILS_OBJ_DIR)%.o : $(UTILS_SRC_DIR)%.c
 
 TEST_NAME = push_swap_test
 TEST_SRC_FILE = \
+		test_main.c \
+		print_objects.c
 
 TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE))
 
