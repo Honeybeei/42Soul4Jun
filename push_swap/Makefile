@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 22:40:00 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/23 21:07:03 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/24 19:33:19 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,28 @@ MAIN_FUNCTION_OBJS = \
 
 # **************************************************************************** # 
 
+# operations
+
+OPERATIONS_DIR = ./operations/
+
+OPERATIONS_SRC_DIR = $(SRC_DIR)$(OPERATIONS_DIR)
+OPERATIONS_SRC_FILE = \
+		push_rules.c \
+		rotate_rules.c \
+		swap_rules.c
+
+OPERATIONS_SRCS = \
+		$(addprefix $(OPERATIONS_SRC_DIR), \
+		$(OPERATIONS_SRC_FILE))
+
+OPERATIONS_OBJ_DIR = $(OBJ_DIR)$(OPERATIONS_DIR)
+OPERATIONS_OBJ_FILE = $(OPERATIONS_SRC_FILE:.c=.o)
+OPERATIONS_OBJS = \
+		$(addprefix $(OPERATIONS_OBJ_DIR), \
+		$(OPERATIONS_OBJ_FILE))
+
+# **************************************************************************** # 
+
 # utils
 
 UTILS_DIR = ./utils/
@@ -80,7 +102,6 @@ UTILS_SRC_DIR = $(SRC_DIR)$(UTILS_DIR)
 UTILS_SRC_FILE = \
 		error_management.c \
 		get_arguments.c \
-		makefile_test.c \
 		object_management_1.c \
 		object_management_2.c
 
@@ -97,7 +118,8 @@ UTILS_OBJS = \
 # **************************************************************************** # 
 
 OBJS_WITHOUT_MAIN = \
-		$(UTILS_OBJS)
+		$(UTILS_OBJS) \
+		$(OPERATIONS_OBJS)
 
 OBJS = $(MAIN_FUNCTION_OBJS) $(OBJS_WITHOUT_MAIN)
 
@@ -119,6 +141,10 @@ $(MAIN_FUNCTION_OBJ_DIR)%.o : $(MAIN_FUNCTION_SRC_DIR)%.c
 	@mkdir -p $(MAIN_FUNCTION_OBJ_DIR)
 	$(COMPILE_FLAGS) -c $< -o $@
 
+$(OPERATIONS_OBJ_DIR)%.o : $(OPERATIONS_SRC_DIR)%.c
+	@mkdir -p $(OPERATIONS_OBJ_DIR)
+	$(COMPILE_FLAGS) -c $< -o $@
+
 $(UTILS_OBJ_DIR)%.o : $(UTILS_SRC_DIR)%.c
 	@mkdir -p $(UTILS_OBJ_DIR)
 	$(COMPILE_FLAGS) -c $< -o $@
@@ -137,7 +163,7 @@ TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE))
 TEST_OBJS = $(TEST_SRCS:.c=.o)
 
 #	Change arguments file here
-TEST_ARGS = 
+TEST_ARGS = 5 4 3 2 1 0
 
 test : mylib clean $(TEST_NAME)
 	@printf "$(Green)\n[ PUSH_SWAP TEST VER compile finished!!] \n\n\n$(Color_Off)"

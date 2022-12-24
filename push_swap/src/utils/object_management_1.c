@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 23:30:04 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/23 16:20:44 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/24 16:57:09 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,22 @@ void	*terminate_t_stack(t_stack *del_stack)
  * 
  * @return t_stacks* 
  */
-t_stacks	*init_t_stacks(void)
+t_stacks	*init_t_stacks(int *arg_arr, int argc)
 {
 	t_stacks	*new_stacks;
+	int			idx;
 
 	new_stacks = malloc(sizeof(t_stacks));
 	if (new_stacks == NULL)
 		return (NULL);
 	new_stacks->a_ = init_t_stack();
 	new_stacks->b_ = init_t_stack();
+	idx = 0;
+	while (idx < argc - 1)
+	{
+		push_t_nd(new_stacks->a_, init_t_nd(arg_arr[idx]), btm_);
+		idx++;
+	}
 	return (new_stacks);
 }
 

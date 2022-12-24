@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 14:37:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/22 23:22:16 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/24 18:28:12 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 int main(int argc, char **argv)
 {
-	int	*arg_arr;
-	
+	int			*arg_arr;
+	t_stacks	*stacks;
 
 	if (argc < 2)
 		return (EXIT_FAILURE);
@@ -29,9 +29,8 @@ int main(int argc, char **argv)
 		free(arg_arr);
 		return (print_error());
 	}
-	
-	// initialize stacks
-	// free arg_arr
+	stacks = init_t_stacks(arg_arr, argc);
+	free(arg_arr);
 	// sort
 	// terminate all
 	
