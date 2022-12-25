@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 23:30:04 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/24 16:57:09 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/24 20:15:01 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	*terminate_t_nd(t_nd *del_node)
  * 
  * @return t_stack* 
  */
-t_stack	*init_t_stack(void)
+t_stack	*init_t_stack(t_s_id stack_id)
 {
 	t_stack	*new_list;
 
@@ -65,6 +65,7 @@ t_stack	*init_t_stack(void)
 	new_list->top_ = NULL;
 	new_list->btm_ = NULL;
 	new_list->nd_cnt_ = 0;
+	new_list->id_ = stack_id;
 	return (new_list);
 }
 
@@ -107,8 +108,8 @@ t_stacks	*init_t_stacks(int *arg_arr, int argc)
 	new_stacks = malloc(sizeof(t_stacks));
 	if (new_stacks == NULL)
 		return (NULL);
-	new_stacks->a_ = init_t_stack();
-	new_stacks->b_ = init_t_stack();
+	new_stacks->a_ = init_t_stack(a_);
+	new_stacks->b_ = init_t_stack(b_);
 	idx = 0;
 	while (idx < argc - 1)
 	{

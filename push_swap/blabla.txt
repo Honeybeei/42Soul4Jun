@@ -1,21 +1,21 @@
 
-# operations
+# sorting
 
-OPERATIONS_DIR = ./operations/
+SORTING_DIR = ./sorting/
 
-OPERATIONS_SRC_DIR = $(SRC_DIR)$(OPERATIONS_DIR)
-OPERATIONS_SRC_FILE = \
+SORTING_SRC_DIR = $(SRC_DIR)$(SORTING_DIR)
+SORTING_SRC_FILE = \
 		error_management.c \
 		get_arguments.c \
 		object_management_1.c \
 		object_management_2.c
 
-OPERATIONS_SRCS = \
-		$(addprefix $(OPERATIONS_SRC_DIR), \
-		$(OPERATIONS_SRC_FILE))
+SORTING_SRCS = \
+		$(addprefix $(SORTING_SRC_DIR), \
+		$(SORTING_SRC_FILE))
 
-OPERATIONS_OBJ_DIR = $(OBJ_DIR)$(OPERATIONS_DIR)
-OPERATIONS_OBJ_FILE = $(OPERATIONS_SRC_FILE:.c=.o)
-OPERATIONS_OBJS = \
-		$(addprefix $(OPERATIONS_OBJ_DIR), \
-		$(OPERATIONS_OBJ_FILE))
+SORTING_OBJ_DIR = $(OBJ_DIR)$(SORTING_DIR)
+SORTING_OBJ_FILE = $(SORTING_SRC_FILE:.c=.o)
+SORTING_OBJS = \
+		$(addprefix $(SORTING_OBJ_DIR), \
+		$(SORTING_OBJ_FILE))

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:25:15 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/24 19:37:18 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/25 15:04:29 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,14 @@ int main(int argc, char **argv)
 
 
 	push_t_nd(stacks->b_, init_t_nd(10), top_);
-	push_t_nd(stacks->b_, init_t_nd(11), top_);
+	push_t_nd(stacks->b_, init_t_nd(14), top_);
 	push_t_nd(stacks->b_, init_t_nd(12), top_);
-	
+	push_t_nd(stacks->b_, init_t_nd(13), top_);
 	print_stacks(stacks);
-	op_push(stacks, b_);
+	if (check_is_sorted(stacks->b_, asc_) == true)
+		printf("Stack b is sorted in ascending order\n");
+	sort_top3(stacks, b_, asc_);
 	print_stacks(stacks);
-	op_swap(stacks, a_);
-	print_stacks(stacks);
-	op_rotate(stacks, a_, up_);
-	print_stacks(stacks);
-	op_rotate(stacks, a_, up_);
-	print_stacks(stacks);
-	op_rotate(stacks, a_, up_);
-	print_stacks(stacks);
-	op_rotate(stacks, a_, up_);
-	print_stacks(stacks);
-	op_rotate(stacks, a_, down_);
-	print_stacks(stacks);
-	op_rotate(stacks, a_, down_);
-	print_stacks(stacks);
-	op_rotate(stacks, a_, down_);
-	print_stacks(stacks);
-	op_rotate(stacks, a_, down_);
-	print_stacks(stacks);
-	
+	if (check_is_sorted(stacks->b_, asc_) == true)
+		printf("Stack b is sorted in ascending order\n");
 }

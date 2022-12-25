@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 22:40:00 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/24 19:33:19 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/25 15:02:33 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,27 @@ OPERATIONS_OBJS = \
 
 # **************************************************************************** # 
 
+# sorting
+
+SORTING_DIR = ./sorting/
+
+SORTING_SRC_DIR = $(SRC_DIR)$(SORTING_DIR)
+SORTING_SRC_FILE = \
+		check_order.c \
+		sort.c
+
+SORTING_SRCS = \
+		$(addprefix $(SORTING_SRC_DIR), \
+		$(SORTING_SRC_FILE))
+
+SORTING_OBJ_DIR = $(OBJ_DIR)$(SORTING_DIR)
+SORTING_OBJ_FILE = $(SORTING_SRC_FILE:.c=.o)
+SORTING_OBJS = \
+		$(addprefix $(SORTING_OBJ_DIR), \
+		$(SORTING_OBJ_FILE))
+
+# **************************************************************************** # 
+
 # utils
 
 UTILS_DIR = ./utils/
@@ -103,7 +124,8 @@ UTILS_SRC_FILE = \
 		error_management.c \
 		get_arguments.c \
 		object_management_1.c \
-		object_management_2.c
+		object_management_2.c \
+		object_management_3.c
 
 UTILS_SRCS = \
 		$(addprefix $(UTILS_SRC_DIR), \
@@ -118,8 +140,9 @@ UTILS_OBJS = \
 # **************************************************************************** # 
 
 OBJS_WITHOUT_MAIN = \
-		$(UTILS_OBJS) \
-		$(OPERATIONS_OBJS)
+		$(OPERATIONS_OBJS) \
+		$(SORTING_OBJS) \
+		$(UTILS_OBJS)
 
 OBJS = $(MAIN_FUNCTION_OBJS) $(OBJS_WITHOUT_MAIN)
 
@@ -143,6 +166,10 @@ $(MAIN_FUNCTION_OBJ_DIR)%.o : $(MAIN_FUNCTION_SRC_DIR)%.c
 
 $(OPERATIONS_OBJ_DIR)%.o : $(OPERATIONS_SRC_DIR)%.c
 	@mkdir -p $(OPERATIONS_OBJ_DIR)
+	$(COMPILE_FLAGS) -c $< -o $@
+
+$(SORTING_OBJ_DIR)%.o : $(SORTING_SRC_DIR)%.c
+	@mkdir -p $(SORTING_OBJ_DIR)
 	$(COMPILE_FLAGS) -c $< -o $@
 
 $(UTILS_OBJ_DIR)%.o : $(UTILS_SRC_DIR)%.c

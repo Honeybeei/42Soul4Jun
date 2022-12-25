@@ -1,37 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_main.c                                   :+:      :+:    :+:   */
+/*   chunks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/21 14:37:18 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/24 20:15:33 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/25 15:50:10 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/25 15:51:06 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-# include <stdio.h>
-
-int main(int argc, char **argv)
-{
-	int			*arg_arr;
-	t_stacks	*stacks;
-
-	if (argc < 2)
-		return (EXIT_FAILURE);
-	arg_arr = atoi_arguments(argc, argv);	
-	if (arg_arr == NULL)
-		return (print_error());
-	if (check_duplication(argc, arg_arr) == invalid_)
-	{
-		free(arg_arr);
-		return (print_error());
-	}
-	stacks = init_t_stacks(arg_arr, argc);
-	free(arg_arr);
-	// sort(stacks);
-	terminate_t_stacks(stacks);
-	return (0);
-}

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:36:52 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/24 18:48:32 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/25 14:09:40 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,27 @@ void	op_push(t_stacks *stacks, t_s_id target_stack)
 		node_to_move = pick_t_nd(stacks->a_, top_);
 		push_t_nd(stacks->b_, node_to_move, top_);
 		ft_putstr_fd("pb\n", STDOUT_FILENO);
+	}
+}
+
+/* ************************************************************************** */
+
+/**
+ * @brief Execute op_push for n times.
+ * 
+ * @param stacks 
+ * @param target_stack 
+ * @param n 
+ */
+void	op_push_n(t_stacks *stacks, t_s_id target_stack, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < n)
+	{
+		op_push(stacks, target_stack);
+		i++;
 	}
 }
 
