@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 23:30:04 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/24 20:15:01 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/26 22:05:31 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_stack	*init_t_stack(t_s_id stack_id)
 	new_list->btm_ = NULL;
 	new_list->nd_cnt_ = 0;
 	new_list->id_ = stack_id;
+	new_list->ch_lst_ = init_t_ch_list();
 	return (new_list);
 }
 
@@ -89,6 +90,7 @@ void	*terminate_t_stack(t_stack *del_stack)
 		del_stack->top_ = del_stack->top_->prev_;
 		terminate_t_nd(del_node);
 	}
+	terminate_t_ch_list(del_stack->ch_lst_);
 	free(del_stack);
 	return (NULL);
 }

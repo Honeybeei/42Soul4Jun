@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 22:40:00 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/25 15:02:33 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/26 21:47:22 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -224,6 +224,6 @@ mylib :
 	@make -C $(MY_LIB_DIR)
 
 norm :
-	@norminette ./inc ./my_lib ./src
+	@norminette ./inc ./my_lib ./src | grep "Error"
 
 .PONEY : all test clean fclean re ree run mylib norm

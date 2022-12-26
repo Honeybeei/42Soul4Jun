@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 15:01:02 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/22 23:27:58 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/26 21:42:13 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	*atoi_arguments(int argc, char **argv)
 
 static t_bool	check_is_num(char *num_str)
 {
-	int idx;
+	int	idx;
 
 	idx = 0;
 	if (num_str[0] == '-')
@@ -122,7 +122,7 @@ static ssize_t	strict_atoi(char *num_str)
 t_bool	check_duplication(int argc, int *arg_arr)
 {
 	int	idx_1;
-	int idx_2;
+	int	idx_2;
 
 	idx_1 = 0;
 	while (idx_1 < argc - 2)

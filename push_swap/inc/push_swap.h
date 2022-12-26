@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/26 16:24:59 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/26 22:31:45 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct s_stacks
 	t_stack	*b_;
 }	t_stacks;
 
-
 /* ************************************************************************** */
 
 //	operations
@@ -114,8 +113,10 @@ bool		check_is_sorted(t_stack *stack, t_dir order);
 
 //		sort.c
 void		sort(t_stacks *stacks);
-void 		sort_top2(t_stacks *stacks, t_s_id target_stack, t_dir order);
+void		sort_top2(t_stacks *stacks, t_s_id target_stack, t_dir order);
 void		sort_top3(t_stacks *stacks, t_s_id target_stack, t_dir order);
+
+//		
 
 /* ************************************************************************** */
 
@@ -141,8 +142,11 @@ t_stack		*push_t_nd(t_stack *stack, t_nd *node, t_dir to);
 
 //		object_management_3.c
 t_stack		*get_stack(t_stacks *stacks, t_s_id stack_id);
+t_chunk		*init_t_chunk(void);
+void		*terminate_t_chunk(t_chunk *del_chunk);
+t_ch_list	*init_t_ch_list(void);
+void		*terminate_t_ch_list(t_ch_list *del_list);
 
 /* ************************************************************************** */
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 20:16:43 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/26 16:24:52 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/26 22:04:57 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ t_chunk	*init_t_chunk(void)
 
 /* ************************************************************************** */
 
+void	*terminate_t_chunk(t_chunk *del_chunk)
+{
+	if (del_chunk == NULL)
+		return (NULL);
+	free(del_chunk);
+	return (NULL);
+}
+
+/* ************************************************************************** */
+
 /**
  * @brief Malloc and initialize t_ch_list.
  * 
@@ -63,15 +73,27 @@ t_ch_list	*init_t_ch_list(void)
 	new_ch_list = ft_calloc(1, sizeof(t_ch_list));
 	if (new_ch_list == NULL)
 		return (NULL);
-	new_ch_list->chunk_cnt = 0;
+	new_ch_list->chunk_cnt_ = 0;
 	return (new_ch_list);
 }
 
 /* ************************************************************************** */
 
-// CHUNK MANAGING FUNCTION IN PROGRESS
+void	*terminate_t_ch_list(t_ch_list *del_list)
+{
+	t_chunk	*del_chunk;
 
-
-/* ************************************************************************** */
+	if (del_list == NULL)
+		return (NULL);
+	del_chunk = del_list->btm_;
+	while (del_list->btm_ != NULL)
+	{
+		del_chunk = del_list->btm_;
+		del_list->btm_ = del_list->btm_->next_;
+		terminate_t_chunk(del_chunk);
+	}
+	free(del_list);
+	return (NULL);
+}
 
 /* ************************************************************************** */

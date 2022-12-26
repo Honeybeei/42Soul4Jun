@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 18:51:11 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/25 14:10:51 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/26 21:41:34 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	op_rotate(t_stacks *stacks, t_s_id target_stack, t_dir shift_dir)
 	if (target_stack == a_)
 	{
 		rotate_stack(stacks->a_, shift_dir);
-		if(shift_dir == up_)
+		if (shift_dir == up_)
 			ft_putstr_fd("ra\n", STDOUT_FILENO);
 		else
 			ft_putstr_fd("rra\n", STDOUT_FILENO);
@@ -38,7 +38,7 @@ void	op_rotate(t_stacks *stacks, t_s_id target_stack, t_dir shift_dir)
 	else if (target_stack == b_)
 	{
 		rotate_stack(stacks->b_, shift_dir);
-		if(shift_dir == up_)
+		if (shift_dir == up_)
 			ft_putstr_fd("rb\n", STDOUT_FILENO);
 		else
 			ft_putstr_fd("rrb\n", STDOUT_FILENO);
@@ -47,7 +47,7 @@ void	op_rotate(t_stacks *stacks, t_s_id target_stack, t_dir shift_dir)
 	{
 		rotate_stack(stacks->a_, shift_dir);
 		rotate_stack(stacks->b_, shift_dir);
-		if(shift_dir == up_)
+		if (shift_dir == up_)
 			ft_putstr_fd("rr\n", STDOUT_FILENO);
 		else
 			ft_putstr_fd("rrr\n", STDOUT_FILENO);

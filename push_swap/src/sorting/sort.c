@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 20:03:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/25 16:00:42 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/26 22:31:43 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	sort_top3_in_descending_order(t_stacks *stacks, t_s_id target);
  */
 void	sort(t_stacks *stacks)
 {
-	t_ch_list	*chunk_list;
+	// t_ch_list	*chunk_list;
 
-	if (stacks->a_->nd_cnt_  < 2)
+	if (stacks->a_->nd_cnt_ < 2)
 		return ;
 	else if (check_is_sorted(stacks->a_, asc_) == true)
 		return ;
@@ -36,10 +36,10 @@ void	sort(t_stacks *stacks)
 		sort_top2(stacks, a_, asc_);
 	else if (stacks->a_->nd_cnt_ == 3)
 		sort_top3(stacks, a_, asc_);
-	else  // more than 3
+	else
 	{
-		chunk_list = split_stack_to_chunks(stacks);
-		merge_chunks(stacks, chunk_list);
+		split_stack_into_chunks(stacks);
+		merge_chunks(stacks);  // TODO
 	}
 }
 

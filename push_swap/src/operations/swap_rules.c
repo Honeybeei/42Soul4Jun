@@ -6,11 +6,12 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:07:47 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/24 18:47:54 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/26 21:43:31 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
+
 static void	swap_top_two_node(t_stack *stack);
 
 /* ************************************************************************** */
@@ -33,7 +34,8 @@ void	op_swap(t_stacks *stacks, t_s_id target_stack)
 		swap_top_two_node(stacks->b_);
 		ft_putstr_fd("sb\n", STDOUT_FILENO);
 	}
-	else if (target_stack == both_ && stacks->a_->nd_cnt_ > 1 && stacks->b_->nd_cnt_ > 1)
+	else if (target_stack == both_ && stacks->a_->nd_cnt_ > 1
+		&& stacks->b_->nd_cnt_ > 1)
 	{
 		swap_top_two_node(stacks->a_);
 		swap_top_two_node(stacks->b_);
