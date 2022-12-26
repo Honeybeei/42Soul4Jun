@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/25 16:00:46 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/26 16:24:59 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,11 @@ typedef struct s_node
 	struct s_node	*prev_;
 }	t_nd;
 
-typedef struct s_stack
-{
-	t_nd	*top_;
-	t_nd	*btm_;
-	size_t	nd_cnt_;
-	t_s_id	id_;
-}	t_stack;
-
-typedef struct s_stacks
-{
-	t_stack	*a_;
-	t_stack	*b_;
-}	t_stacks;
-
-typedef struct s_chunk_node
+typedef struct s_chunk
 {
 	t_nd			*btm_;
 	t_nd			*top_;
-	size			nd_cnt_;
+	size_t			nd_cnt_;
 	struct s_chunk	*next_;
 	struct s_chunk	*prev_;
 }	t_chunk;
@@ -87,8 +73,24 @@ typedef struct s_chunk_list
 {
 	t_chunk	*btm_;
 	t_chunk	*top_;
-	size_t	chunk_cnt;
+	size_t	chunk_cnt_;
 }	t_ch_list;
+
+typedef struct s_stack
+{
+	t_nd		*top_;
+	t_nd		*btm_;
+	size_t		nd_cnt_;
+	t_s_id		id_;
+	t_ch_list	*ch_lst_;
+}	t_stack;
+
+typedef struct s_stacks
+{
+	t_stack	*a_;
+	t_stack	*b_;
+}	t_stacks;
+
 
 /* ************************************************************************** */
 

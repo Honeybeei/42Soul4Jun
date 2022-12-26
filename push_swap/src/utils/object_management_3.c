@@ -6,12 +6,21 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 20:16:43 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/24 20:18:24 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/26 16:24:52 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
+/* ************************************************************************** */
+
+/**
+ * @brief Returns matching t_stack.
+ * 
+ * @param stacks 
+ * @param stack_id 
+ * @return t_stack* 
+ */
 t_stack	*get_stack(t_stacks *stacks, t_s_id stack_id)
 {
 	if (stack_id == a_)
@@ -21,3 +30,48 @@ t_stack	*get_stack(t_stacks *stacks, t_s_id stack_id)
 	else
 		return (NULL);
 }
+
+/* ************************************************************************** */
+
+/**
+ * @brief Malloc and initialize t_chunk
+ * 
+ * @return t_chunk* 
+ */
+t_chunk	*init_t_chunk(void)
+{
+	t_chunk	*new_chunk;
+
+	new_chunk = ft_calloc(1, sizeof(t_chunk));
+	if (new_chunk == NULL)
+		return (NULL);
+	new_chunk->nd_cnt_ = 0;
+	return (new_chunk);
+}
+
+/* ************************************************************************** */
+
+/**
+ * @brief Malloc and initialize t_ch_list.
+ * 
+ * @return t_ch_list* 
+ */
+t_ch_list	*init_t_ch_list(void)
+{
+	t_ch_list	*new_ch_list;
+
+	new_ch_list = ft_calloc(1, sizeof(t_ch_list));
+	if (new_ch_list == NULL)
+		return (NULL);
+	new_ch_list->chunk_cnt = 0;
+	return (new_ch_list);
+}
+
+/* ************************************************************************** */
+
+// CHUNK MANAGING FUNCTION IN PROGRESS
+
+
+/* ************************************************************************** */
+
+/* ************************************************************************** */
