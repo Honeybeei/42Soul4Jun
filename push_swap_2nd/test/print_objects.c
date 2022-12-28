@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:25:53 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/27 17:06:56 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/28 14:49:38 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ void	print_stack(t_ch_lst *list, t_s_id id)
 
 void	print_stacks(t_stacks *stacks)
 {
+	printf("\n");
 	print_stack(&stacks->a_, a_);
 	print_stack(&stacks->b_, b_);
+	printf("\n");
 }
 
 /* ************************************************************************** */

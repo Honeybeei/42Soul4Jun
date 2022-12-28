@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 20:25:15 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/27 20:32:07 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/28 14:55:29 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ int	main(int argc, char **argv)
 	push_args_to_stack(&stacks, arg_arr, argc);
 	free(arg_arr);
 	print_stacks(&stacks);
+	
+	op_swap(&stacks, a_);
+	print_stacks(&stacks);
+
+	push_chunk(make_chunk(), get_stack(&stacks, b_), top_);
+	push_chunk(make_chunk(), get_stack(&stacks, b_), top_);
+	push_chunk(make_chunk(), get_stack(&stacks, b_), top_);
+	push_node(make_node(1), get_chunk(&stacks, b_, top_), top_);
+	push_node(make_node(2), get_chunk(&stacks, b_, top_), top_);
+	print_stacks(&stacks);
+
+	if (op_swap(&stacks, b_))
+		printf("swap fail\n\n");
+	print_stacks(&stacks);	
+	
+	
+	
 	// sort(stacks);
 	push_swap_termination(&stacks);
 	return (0);

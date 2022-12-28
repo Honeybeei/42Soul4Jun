@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/27 20:21:08 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/28 14:46:16 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ typedef enum e_directions
 	head_ = -1,
 	tail_ = 1
 }	t_dir;
+
+typedef	enum e_sorting_order
+{
+	asc_ = -1,
+	desc_ = 1
+}	t_order;
 
 typedef enum e_stack_id
 {
@@ -84,39 +90,50 @@ typedef struct s_stacks
 
 /* ************************************************************************** */
 
+//	operations
+//		swap.c
+t_bool		op_swap(t_stacks *stacks, t_s_id s_id);
+
+/* ************************************************************************** */
+
 //	sorting
 //		sort_main.c
-void	push_args_to_stack(t_stacks *stacks, int *arg_arr, int argc);
-// void	sort(t_stacks *stacks);
+void		push_args_to_stack(t_stacks *stacks, int *arg_arr, int argc);
+void		sort(t_stacks *stacks);
 
 /* ************************************************************************** */
 
 //	utils
 //		error_management.c
-void	print_error_and_exit(void);
+void		print_error_and_exit(void);
 
-//		get_arguments.c
-int		*atoi_arguments(int argc, char **argv);
-t_bool	check_duplication(int argc, int *arg_arr);
+//		get_objects.c
+t_ch_lst	*get_stack(t_stacks *stacks, t_s_id s_id);
+t_chunk		*get_chunk(t_stacks *stacks, t_s_id s_id, t_dir top_or_btm);
+size_t		get_nd_cnt(t_stacks *stacks, t_s_id s_id);
 
 //		object_management_1.c
-t_nd	*make_node(int n);
-void	*terminate_node(t_nd *del_node);
-t_chunk	*make_chunk(void);
-void	*terminate_chunk(t_chunk *del_chunk);
-void	clear_chunk_list(t_ch_lst *list);
+t_nd		*make_node(int n);
+void		*terminate_node(t_nd *del_node);
+t_chunk		*make_chunk(void);
+void		*terminate_chunk(t_chunk *del_chunk);
+void		clear_chunk_list(t_ch_lst *list);
 
 //		object_management_2.c
-void	push_swap_init(t_stacks *stacks);
-void	push_swap_termination(t_stacks *stacks);
-void	push_chunk(t_chunk *chunk, t_ch_lst *list, t_dir dst);
-t_chunk	*pick_chunk(t_ch_lst *list, t_dir src);
+void		push_swap_init(t_stacks *stacks);
+void		push_swap_termination(t_stacks *stacks);
+void		push_chunk(t_chunk *chunk, t_ch_lst *list, t_dir dst);
+t_chunk		*pick_chunk(t_ch_lst *list, t_dir src);
 
 //		object_management_3.c
-void	pop_chunk(t_ch_lst *list, t_dir src);
-void	push_node(t_nd *node, t_chunk *chunk, t_dir dst);
-t_nd	*pick_node(t_chunk *chunk, t_dir src);
-void	pop_node(t_chunk *chunk, t_dir src);
+void		pop_chunk(t_ch_lst *list, t_dir src);
+void		push_node(t_nd *node, t_chunk *chunk, t_dir dst);
+t_nd		*pick_node(t_chunk *chunk, t_dir src);
+void		pop_node(t_chunk *chunk, t_dir src);
+
+//		parse_arguments.c
+int			*atoi_arguments(int argc, char **argv);
+t_bool		check_duplication(int argc, int *arg_arr);
 
 /* ************************************************************************** */
 

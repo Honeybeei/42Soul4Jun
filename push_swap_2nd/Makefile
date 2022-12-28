@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 22:40:00 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/27 20:21:25 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/28 14:45:19 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,8 @@ MAIN_FUNCTION_OBJS = \
 OPERATIONS_DIR = ./operations/
 
 OPERATIONS_SRC_DIR = $(SRC_DIR)$(OPERATIONS_DIR)
-OPERATIONS_SRC_FILE = 
+OPERATIONS_SRC_FILE = \
+		swap.c
 
 OPERATIONS_SRCS = \
 		$(addprefix $(OPERATIONS_SRC_DIR), \
@@ -118,10 +119,11 @@ UTILS_DIR = ./utils/
 UTILS_SRC_DIR = $(SRC_DIR)$(UTILS_DIR)
 UTILS_SRC_FILE = \
 		error_management.c \
-		get_arguments.c \
+		get_objects.c \
 		object_management_1.c \
 		object_management_2.c \
-		object_management_3.c
+		object_management_3.c \
+		parse_arguments.c
 
 UTILS_SRCS = \
 		$(addprefix $(UTILS_SRC_DIR), \
