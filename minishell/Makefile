@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2022/12/15 13:02:09 by seoyoo           ###   ########.fr        #
+#    Updated: 2022/12/17 13:22:48 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,8 +74,7 @@ ETC_DIR = etc/
 # etc - src
 ETC_SRC_DIR = $(SRC_DIR)$(ETC_DIR)
 ETC_SRC_FILE = \
-		blabla1.c \
-		get_input.c \
+		input_management.c \
 		user_interface.c
 
 ETC_SRCS = $(addprefix $(ETC_SRC_DIR), $(ETC_SRC_FILE))
@@ -111,8 +110,7 @@ OBJECT_MANAGEMENT_DIR = object_management/
 
 # OBJECT_MANAGEMENT - src
 OBJECT_MANAGEMENT_SRC_DIR = $(SRC_DIR)$(OBJECT_MANAGEMENT_DIR)
-OBJECT_MANAGEMENT_SRC_FILE = \
-        manage_t_input.c
+OBJECT_MANAGEMENT_SRC_FILE = 
 
 OBJECT_MANAGEMENT_SRCS = $(addprefix $(OBJECT_MANAGEMENT_SRC_DIR), $(OBJECT_MANAGEMENT_SRC_FILE))
 
@@ -129,8 +127,7 @@ TOKENIZER_DIR = tokenizer/
 
 # TOKENIZER - src
 TOKENIZER_SRC_DIR = $(SRC_DIR)$(TOKENIZER_DIR)
-TOKENIZER_SRC_FILE = \
-        str_functions.c
+TOKENIZER_SRC_FILE = 
 
 TOKENIZER_SRCS = $(addprefix $(TOKENIZER_SRC_DIR), $(TOKENIZER_SRC_FILE))
 

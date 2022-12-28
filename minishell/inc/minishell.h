@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/15 14:11:38 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/19 13:39:22 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,44 @@
 # include "def_str.h"
 # include "my_booleans.h"
 
+# include "libft_functions.h"
+
 /* ************************************************************************** */
 
-typedef struct s_user_input
+typedef enum e_token_type
 {
-	int		str_cnt_;
-	char	**str_arr_;
-}	t_input;
+    single_quoted_string_ = 0,
+    double_quoted_string_,
+    redirection_,
+    pipe,
+    dollar_variable,  // NEED TO BE FIXED, 
+    ctrl_commands_,
+    builtins_,
+    etc = -1
+}   t_t_type;
 
-/* ************************************************************************** */
+typedef struct s_token_node
+{
+    char                *str_;
+    t_t_type            type_;
+    struct s_token_node *next_;
+    struct s_token_node *prev_;
+
+}   t_tkn_nd;
+
+typedef struct s_token_list
+{
+    t_tkn_nd    *head_;
+    t_tkn_nd    *tail_;
+    size_t      nd_cnt_;
+}   t_tkn_lst;
+
 
 //	etc
 
-//		blabla1.c
-void	say_hello(int n);
-
 //		user_interface.c
 void	enter_shell(void);
-
-//		get_input.c
-t_input	*get_input_from_user(void);
-
-/* ************************************************************************** */
-
-//	object_management
-
-//		manage_t_input
-t_input	*init_t_input(void);
-int		terminate_t_input(t_input *input);
+char	*get_input_from_user(void);
 
 /* ************************************************************************** */
 

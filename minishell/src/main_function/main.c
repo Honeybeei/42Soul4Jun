@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/13 16:00:06 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/19 13:40:59 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 int	main(void)
 {
-	t_input	*user_input;
+	char	*user_input;
 
 	enter_shell();
 	while (true)
 	{
 		user_input = get_input_from_user();
+
 		// test
 		if (user_input != NULL)
 			printf("user input is not null\n");
@@ -30,7 +31,7 @@ int	main(void)
 
 		// TODO : Tokenize user_input(t_input) and terminate user_input. 
 
-		// TODO : Execute Tokenized command. 
+		// TODO : Execute Tokenized objects. 
 	}
 	return (0);
 }
