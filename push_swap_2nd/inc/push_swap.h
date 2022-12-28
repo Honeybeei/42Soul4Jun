@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 22:44:49 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/28 14:46:16 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/28 17:20:33 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@ typedef enum e_stack_id
 	b_
 }	t_s_id;
 
+typedef enum e_operation_number
+{
+	swap_ = 0,
+	push_,
+	rotate_,
+	rrotate_
+}	t_op_num;
+
 /* ************************************************************************** */
 
 // head == btm | node -> node -> .... -> node | tail == top
@@ -92,7 +100,10 @@ typedef struct s_stacks
 
 //	operations
 //		swap.c
-t_bool		op_swap(t_stacks *stacks, t_s_id s_id);
+void		op_swap(t_stacks *stacks, t_s_id s_id);
+
+//		push.c
+void		op_push(t_stacks *stacks, t_s_id dst_stack);
 
 /* ************************************************************************** */
 
@@ -106,6 +117,7 @@ void		sort(t_stacks *stacks);
 //	utils
 //		error_management.c
 void		print_error_and_exit(void);
+void		operation_fail_protocol(t_stacks *stacks, t_op_num op_num);
 
 //		get_objects.c
 t_ch_lst	*get_stack(t_stacks *stacks, t_s_id s_id);

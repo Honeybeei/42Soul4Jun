@@ -6,11 +6,13 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 13:55:11 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/28 14:57:23 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/28 17:19:56 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
+
+static t_bool	swap_top_two_node(t_stacks *stacks, t_s_id s_id);
 
 /* ************************************************************************** */
 
@@ -22,7 +24,7 @@
  * @param s_id 
  * @return t_bool 
  */
-t_bool	op_swap(t_stacks *stacks, t_s_id s_id)
+static t_bool	swap_top_two_node(t_stacks *stacks, t_s_id s_id)
 {
 	t_chunk	*top_chunk;
 	t_nd	*nd_1;
@@ -41,6 +43,25 @@ t_bool	op_swap(t_stacks *stacks, t_s_id s_id)
 }
 
 /* ************************************************************************** */
+
+void	op_swap(t_stacks *stacks, t_s_id s_id)
+{
+	if (s_id == both_)
+	{
+		if (swap_top_two_node(stacks, a_) == fail_ || swap_top_two_node(stacks, b_) == fail_)
+			operation_fail_protocol(stacks, swap_);
+		ft_putstr_fd("ss\n", STDOUT_FILENO);
+	}
+	else
+	{
+		if (swap_top_two_node(stacks, s_id) == fail_)
+			operation_fail_protocol(stacks, swap_);
+		if (s_id == a_)
+			ft_putstr_fd("sa\n", STDOUT_FILENO);
+		else
+			ft_putstr_fd("sb\n", STDOUT_FILENO);
+	}
+}
 
 /* ************************************************************************** */
 
