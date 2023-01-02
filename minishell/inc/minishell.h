@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/19 13:39:22 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/29 23:10:49 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,23 @@
 
 /* ************************************************************************** */
 
+/**
+ * Types
+ * I. word
+ *      1. non-quoted
+ *      2. single-quoted
+ *      3. double-quoted
+ * II. meta_character
+ *      1. white-space
+ *      2. operator
+ *          
+ * 
+ */
 typedef enum e_token_type
 {
-    single_quoted_string_ = 0,
-    double_quoted_string_,
-    redirection_,
-    pipe,
-    dollar_variable,  // NEED TO BE FIXED, 
-    ctrl_commands_,
-    builtins_,
-    etc = -1
+    wd_non_quoted_,     // wd == word
+    wd_single_quoted_,
+
 }   t_t_type;
 
 typedef struct s_token_node
