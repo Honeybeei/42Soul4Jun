@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_management.c                                 :+:      :+:    :+:   */
+/*   safe_malloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 13:19:36 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/29 20:32:21 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/30 13:08:26 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/02 13:53:45 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,31 @@
 /* ************************************************************************** */
 
 /**
- * @brief Get string(User input) from STD_IN and saves it to the history before 
- * returns it. 
+ * @brief Same as calloc() but it will terminate current process with printing 
+ * error message when malloc fail. 
  * 
- * @return char* 
+ * @note This should be the only function for malloc in this project!!
+ * 
+ * @param count 
+ * @param size 
+ * @return void* 
  */
-char	*get_input_from_user(void)
+void	*calloc_safe(size_t count, size_t size)
 {
-	char    *read_line_result;
-	
-	read_line_result = readline(PROMPT_STR);
-	if (read_line_result != NULL && read_line_result[0] != '\0') 
-		add_history(read_line_result);
-	return (read_line_result);
+	unsigned char	*dst;
+	size_t			i;
+
+	dst = NULL;
+	dst = (void *)malloc(count * size);
+	if (dst == NULL)
+		termination_ptcl(&g_ptrs);
+	i = 0;
+	while (i < count * size)
+	{
+		dst[i] = (unsigned char)0;
+		i++;
+	}
+	return (dst);
 }
 
 /* ************************************************************************** */

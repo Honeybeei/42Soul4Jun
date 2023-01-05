@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_booleans.h                                      :+:      :+:    :+:   */
+/*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 14:06:59 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/15 20:02:52 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/30 13:49:00 by seoyoo            #+#    #+#             */
+/*   Updated: 2022/12/30 16:39:38 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MY_BOOLEANS_H
-# define MY_BOOLEANS_H
+#include "../../inc/minishell.h"
 
-typedef enum e_my_booleans
+/* ************************************************************************** */
+
+void	tokenize_user_input(t_tkn_lst *list, char *user_input)
 {
-	yes_err_ = -1,
-	no_err_ = 1,
-	head_ = -1,
-	tail_ = 1,
-	down_ = -1,
-	up_ = 1
-}	t_bool;
+	(void)list;			//	Erase this!!
+	(void)user_input;	//	Erase this!!
+	// TODO --> Only use "push_tkn_nd_to_list()" function to push node to list. 
+}
 
-#endif
+/* ************************************************************************** */

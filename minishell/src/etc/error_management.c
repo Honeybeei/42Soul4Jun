@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_management.c                                 :+:      :+:    :+:   */
+/*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/17 13:19:36 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/29 20:32:21 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/12/29 19:21:48 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/02 13:52:55 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,26 @@
 /* ************************************************************************** */
 
 /**
- * @brief Get string(User input) from STD_IN and saves it to the history before 
- * returns it. 
+ * @brief Print error message according to errno(param1)
  * 
- * @return char* 
+ * @param errno 
  */
-char	*get_input_from_user(void)
+void	print_error_msg(t_errno errno)
 {
-	char    *read_line_result;
-	
-	read_line_result = readline(PROMPT_STR);
-	if (read_line_result != NULL && read_line_result[0] != '\0') 
-		add_history(read_line_result);
-	return (read_line_result);
+	char	*err_msg;
+
+	if (errno == err_malloc_fail_)
+		err_msg = "FATAL ERROR : Malloc fail! Terminating process.\n";
+	else
+		err_msg = "Undefined error occurred......";
+	ft_putstr_fd(err_msg, STDERR_FILENO);
+}
+
+/* ************************************************************************** */
+
+void	manage_error_cases(void)
+{
+	// TODO
 }
 
 /* ************************************************************************** */

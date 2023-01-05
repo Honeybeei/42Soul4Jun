@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_functions.c                                    :+:      :+:    :+:   */
+/*   str_functions_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:26:04 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/15 19:32:08 by seoyoo           ###   ########.fr       */
+/*   Updated: 2022/12/30 13:28:12 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft_functions.h"
+#include "../../inc/minishell.h"
 
 /* ************************************************************************** */
 
@@ -80,9 +80,7 @@ char	*ft_strdup(const char *str)
 {
 	char	*dup_str;
 
-	dup_str = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	if (dup_str == NULL)
-		return (NULL);
+	dup_str = calloc_safe(ft_strlen(str) + 1, sizeof(char));
 	return (ft_strcpy(dup_str, str));
 }
 

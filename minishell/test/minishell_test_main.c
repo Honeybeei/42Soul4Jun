@@ -6,24 +6,32 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:11:42 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/15 13:19:47 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/01 18:38:22 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
-#include "../inc/libft_functions.h"
 
-int main(void)
+void	print_var_list(t_var_lst *list)
+{
+	t_var_nd	*ptr;
+
+	ptr = list->head_;
+	while (ptr != NULL)
+	{
+		printf("%s = %s\n", ptr->name_, ptr->val_);
+		ptr = ptr->next_;
+	}
+}
+
+int main(int argc, char **argv, char **envp)
 {
 	printf("\n\nEntered Testing area\n\n");
 
-	char *str = "Hello world!";
-	char dst[100];
-	char *dup_str;
-	printf("\nstrlen : [%zu]\n", ft_strlen(str));
-	printf("\nstrcpy : src -> [%s], dst -> [%s]\n", str, ft_strcpy(dst, str));
-	printf("\nstrncpy : src -> [%s], dst -> [%s]\n", "123456", ft_strncpy(dst, "123456", 3));
-	dup_str = ft_strdup(str);
-	printf("\nstrdup : src -> [%s], dupstr -> [%s]\n", str, dup_str);
+	(void)argc;
+	(void)argv;
+	init_ptrs(&g_ptrs, envp);
+	print_var_list(&g_ptrs.variable_list_);
+	
 	return (0);
 }
