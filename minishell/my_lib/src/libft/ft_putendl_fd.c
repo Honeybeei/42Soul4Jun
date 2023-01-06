@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 19:56:12 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 11:07:01 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Print the string  s(1st Parameter) to the given file descriptor 
+ * followed by a newline. 
+ * 
+ * @param s 
+ * @param fd 
+ */
+void	ft_putendl_fd(char *s, int fd)
 {
-	if (argc > 1)
-	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }
 
 /* ************************************************************************** */

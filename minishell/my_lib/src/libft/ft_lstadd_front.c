@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 20:48:59 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 14:11:53 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Add the node 'new'(2nd Parameter) at the beginning of the list.
+ * 
+ * @param lst 
+ * @param new 
+ */
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (argc > 1)
+	if (lst == NULL)
+		*lst = new;
+	else
 	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		new->next = *lst;
+		*lst = new;
 	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
 }
 
 /* ************************************************************************** */

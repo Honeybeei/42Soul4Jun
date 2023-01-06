@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 21:35:26 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 14:11:53 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Delete and free the given node(1st Parameter) and every successor of 
+ * that node, using 'del'(2nd Parameter) and free. Finally, the pointer to the 
+ * list must be set to NULL.
+ * 
+ * @param lst 
+ * @param del 
+ */
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (argc > 1)
+	t_list	*node_p;
+	t_list	*node_del;
+
+	node_p = *lst;
+	while (node_p != NULL)
 	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		node_del = node_p;
+		node_p = node_p->next;
+		ft_lstdelone(node_del, del);
 	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
+	*lst = NULL;
 }
 
 /* ************************************************************************** */

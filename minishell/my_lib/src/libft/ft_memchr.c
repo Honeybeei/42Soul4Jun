@@ -1,31 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/12 17:39:21 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 11:01:12 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Locates the first occurrence of c(2nd Parameter)(converted to an 
+ * unsigned char) in string s(1st Parameter). 
+ * 
+ * @param s 
+ * @param c 
+ * @param n 
+ * @return void* 
+ */
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (argc > 1)
+	unsigned char	*p;
+	unsigned char	temp_c;
+	size_t			i;
+
+	p = (unsigned char *)s;
+	i = 0;
+	temp_c = (unsigned char)c;
+	while (i < n)
 	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		if (p[i] == temp_c)
+			return (p + i);
+		i++;
 	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
+	return (NULL);
 }
 
 /* ************************************************************************** */

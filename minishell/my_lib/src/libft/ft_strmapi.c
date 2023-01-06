@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 19:08:43 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 13:22:52 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Applies function f(2nd Parameter) to all the characters in string 
+ * s(1st Parameter).
+ * 
+ * @param s 
+ * @param f 
+ * @return char* 
+ */
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (argc > 1)
+	char			*dst;
+	unsigned int	i;
+
+	dst = ft_strdup(s);
+	if (dst == NULL)
+		return (NULL);
+	i = 0;
+	while (dst[i] != '\0')
 	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		dst[i] = f(i, dst[i]);
+		i++;
 	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
+	return (dst);
 }
 
 /* ************************************************************************** */

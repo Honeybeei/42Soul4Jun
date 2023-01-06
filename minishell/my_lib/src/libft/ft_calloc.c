@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/13 14:26:35 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/05 21:29:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Allocate count(1st Parameter) amount with size(2nd Parameter) bytes of
+ *  memory and fill with zero.
+ * 
+ * @param count 
+ * @param size 
+ * @return void* 
+ */
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (argc > 1)
-	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
+	void	*dst;
+
+	dst = NULL;
+	dst = (void *)malloc(count * size);
+	if (dst == NULL)
+		return (NULL);
+	ft_memset(dst, 0, count * size);
+	return (dst);
 }
 
 /* ************************************************************************** */

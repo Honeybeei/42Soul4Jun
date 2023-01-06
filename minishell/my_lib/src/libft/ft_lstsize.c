@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 20:56:20 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 14:13:02 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Counts the number of nodes in a list(1st Parameter)
+ * 
+ * @param lst 
+ * @return int 
+ */
+int	ft_lstsize(t_list *lst)
 {
-	if (argc > 1)
+	t_list	*node_p;
+	size_t	count;
+
+	node_p = lst;
+	count = 0;
+	while (node_p != NULL)
 	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		count++;
+		node_p = node_p->next;
 	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
+	return (count);
 }
 
 /* ************************************************************************** */

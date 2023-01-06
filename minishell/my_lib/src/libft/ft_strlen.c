@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 15:11:42 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:10:35 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/10 15:58:29 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 13:22:21 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
-#include <stdio.h>
+#include "../../inc/libft.h"
 
-int	main(int argc, char **argv, char **envp)
+/* ************************************************************************** */
+
+/**
+ * @brief Returns the length of the string(Nul'\0' terminating string).
+ * 
+ * @param s 
+ * @return size_t 
+ */
+size_t	ft_strlen(const char *s)
 {
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	printf("\n\nEntered Testing area\n\n");
-	return (0);
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
+
+/* ************************************************************************** */

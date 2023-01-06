@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 22:33:00 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 14:11:53 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Iterates the list 'lst'(1st Parameter) and applies the function 
+ * 'f'(2nd Parameter) on the content of each node.
+ * 
+ * @param lst 
+ * @param f 
+ */
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (argc > 1)
+	t_list	*node_p;
+
+	node_p = lst;
+	while (node_p != NULL)
 	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		f(node_p->content);
+		node_p = node_p->next;
 	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
 }
 
 /* ************************************************************************** */

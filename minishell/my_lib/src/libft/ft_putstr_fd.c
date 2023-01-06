@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 15:11:42 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:10:35 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 19:52:37 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 11:09:11 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
-#include <stdio.h>
+#include "../../inc/libft.h"
 
-int	main(int argc, char **argv, char **envp)
+/* ************************************************************************** */
+
+/**
+ * @brief Outputs the string s(1st Parameter) to the given file descriptor.
+ * 
+ * @param s 
+ * @param fd 
+ */
+void	ft_putstr_fd(char *s, int fd)
 {
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	printf("\n\nEntered Testing area\n\n");
-	return (0);
+	size_t	str_len;
+
+	str_len = ft_strlen(s);
+	write(fd, s, str_len);
 }
+
+/* ************************************************************************** */

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 15:11:42 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:10:35 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/10 15:52:58 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/05 21:32:33 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
-#include <stdio.h>
+#include "../../inc/libft.h"
 
-int	main(int argc, char **argv, char **envp)
+/* ************************************************************************** */
+
+/**
+ * @brief Checks if c(1st Parameter) is an printable character. 
+ * 
+ * @param c 
+ * @return int 
+ */
+int	ft_isprint(int c)
 {
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	printf("\n\nEntered Testing area\n\n");
+	if (040 <= c && c <= 0176)
+		return (1);
 	return (0);
 }
+
+/* ************************************************************************** */

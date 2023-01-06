@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 21:03:39 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 14:11:53 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Returns the last Node of the list.
+ * 
+ * @param lst 
+ * @return t_list* 
+ */
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (argc > 1)
-	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
+	t_list	*node_p;
+
+	if (lst == NULL)
+		return (NULL);
+	node_p = lst;
+	while (node_p->next != NULL)
+		node_p = node_p->next;
+	return (node_p);
 }
 
 /* ************************************************************************** */

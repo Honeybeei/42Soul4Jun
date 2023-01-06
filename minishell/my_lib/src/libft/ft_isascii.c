@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 15:11:42 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:10:35 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/10 15:41:29 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/05 21:31:21 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
-#include <stdio.h>
+#include "../../inc/libft.h"
 
-int	main(int argc, char **argv, char **envp)
+/* ************************************************************************** */
+
+/**
+ * @brief Checks if c(1st Parameter) is an ASCII character. 
+ * 
+ * @param c 
+ * @return int 
+ */
+int	ft_isascii(int c)
 {
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	printf("\n\nEntered Testing area\n\n");
+	if (0 <= c && c <= 0177)
+		return (1);
 	return (0);
 }
+
+/* ************************************************************************** */

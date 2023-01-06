@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:14 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/14 19:32:53 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 13:18:01 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-
-/* ************************************************************************** */
-# include <unistd.h>		//  STDIN_FILENO, STDERR_FILENO, 
-# include <stdlib.h>        //  EXIT_FAILURE, 
-
-# include "../my_lib/inc/libft.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-# define PROMPT_STR "Jsh -> "
-
-/* ************************************************************************** */
-
-typedef struct s_minishell_pointers
+/**
+ * @brief Applies function f(2nd Parameter) to all the characters of the string 
+ * s(1st Parameter). Each character is passed by address to f.
+ * 
+ * @param s 
+ * @param f 
+ */
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-    /* data */
-};
+	unsigned long	i;
 
+	i = 0;
+	while (s[i] != '\0')
+	{
+		f(i, s + i);
+		i++;
+	}
+}
 
 /* ************************************************************************** */
-
-#endif

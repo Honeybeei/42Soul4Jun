@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_main.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 15:11:42 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:10:35 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/12 16:18:17 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 13:32:50 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
-#include <stdio.h>
+#include "../../inc/libft.h"
 
-int	main(int argc, char **argv, char **envp)
+/* ************************************************************************** */
+
+/**
+ * @brief Convert a single character c(1st Parameter) to lower case if it is a 
+ * uppercase.
+ * 
+ * @param c 
+ * @return int 
+ */
+int	ft_tolower(int c)
 {
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	printf("\n\nEntered Testing area\n\n");
-	return (0);
+	if ('A' <= c && c <= 'Z')
+		c = c - 'A' + 'a';
+	return (c);
 }
+
+/* ************************************************************************** */

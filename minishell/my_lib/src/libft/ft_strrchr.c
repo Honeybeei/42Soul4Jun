@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:15 by seoyoo           ###   ########.fr       */
+/*   Created: 2022/05/12 16:42:32 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 13:29:58 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief Same as strchr function but returns the pointer of the last occurrence
+ *  of the c(2nd Parameter)
+ * 
+ * @param s 
+ * @param c 
+ * @return char* 
+ */
+char	*ft_strrchr(const char *s, int c)
 {
-	if (argc > 1)
+	char	*p;
+	char	*p_to_return;
+	size_t	i;
+
+	p_to_return = NULL;
+	p = (char *)s;
+	i = 0;
+	while (p[i] != '\0')
 	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		if (p[i] == c)
+			p_to_return = (p + i);
+		i++;
 	}
-	(void)argv;
-	
-	// start_shell();	// print_banner, init signals, init ptrs
+	if (p[i] == c)
+		p_to_return = (p + i);
+	return (p_to_return);
 }
 
 /* ************************************************************************** */

@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/05 21:19:37 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/06 14:14:17 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,24 +26,29 @@ White = \033[0;37m		# White
 # target
 NAME = minishell
 
-# compiling options
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-DBFLAG = -g
-RDLINE = -lreadline
-OPTIMMIZATION = -O3
-INC = -I ./
-
 # directories
 SRC_DIR = ./src/
 INC_DIR = ./inc/
 OBJ_DIR = ./obj/
 TEST_DIR = ./test/
 
+# compiling options
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+DBFLAG = -g
+RDLINE = -lreadline
+OPTIMMIZATION = -O3
+INC = -I $(INC_DIR)
+
+# my_lib
+MY_LIB_DIR = ./my_lib/
+MY_LIB_ARC = my_lib.a
+MY_LIB = $(MY_LIB_DIR)$(MY_LIB_ARC)
+
 # COMPILE = $(CC) $(CFLAGS) $(OPTIMMIZATION) # -> this will be the final flag
 COMPILE = $(CC) $(CFLAGS) $(DBFLAG)
 # LINKING = $(CC) $(CFLAGS) $(INC)  # incase for error
-LINKING = $(CC) $(CFLAGS) $(RDLINE)
+LINKING = $(CC) $(CFLAGS) $(RDLINE) $(MY_LIB)
 
 # **************************************************************************** #
 
@@ -73,13 +78,7 @@ ETC_DIR = etc/
 
 # etc - src
 ETC_SRC_DIR = $(SRC_DIR)$(ETC_DIR)
-ETC_SRC_FILE = \
-		error_management.c \
-		init_and_termination.c \
-		input_management.c \
-		safe_malloc.c \
-		start_shell.c \
-		variable_control.c
+ETC_SRC_FILE = 
 
 ETC_SRCS = $(addprefix $(ETC_SRC_DIR), $(ETC_SRC_FILE))
 
@@ -99,6 +98,8 @@ OBJS += $(OBJS_WITHOUT_MAIN)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
+	@make mylib
+	@printf "$(Green)\n[ my_lib compile finished!!] \n$(Color_Off)"
 	$(LINKING) -o $@ $^
 
 # add rules to compile src file in each folders
@@ -126,7 +127,7 @@ TEST_OBJS = $(TEST_SRCS:.c=.o)
 # add $(*_OBJS) for unit-test
 TESTING_TARGET = $(OBJS_WITHOUT_MAIN);
 
-test : clean $(TEST_NAME)
+test : clean mylib $(TEST_NAME)
 	@./$(TEST_NAME)
 
 $(TEST_NAME) : $(TEST_OBJS) $(TESTING_TARGET)
@@ -143,6 +144,7 @@ clean :
 	rm -f $(TEST_OBJS)
 
 fclean : clean
+	@make fclean -C $(MY_LIB_DIR)
 	rm -f $(NAME)
 	rm -f $(TEST_NAME)
 
@@ -154,4 +156,7 @@ run : all
 norm : 
 	@norminette ./src ./inc
 
-.PONEY : all test clean fclean re run
+mylib :
+	@make -C $(MY_LIB_DIR)
+
+.PONEY : all test clean fclean re run norm mylib
