@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/06 16:11:50 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/06 19:43:04 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,8 @@ ETC_DIR = etc/
 ETC_SRC_DIR = $(SRC_DIR)$(ETC_DIR)
 ETC_SRC_FILE = \
 		error_handler.c \
-		s_variable.c \
+		s_variable_1.c \
+		s_variable_2.c \
 		safe_malloc.c \
 		start_shell.c
 
