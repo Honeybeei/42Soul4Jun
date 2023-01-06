@@ -6,23 +6,25 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:04:26 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:02 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 13:23:46 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// strncmp compares not more than n(3rd Parameter) characters from s1(1st 
-// Parameter) and s2(2nd Parameter). Characters that appear after a '\0' should 
-// not be compared. Comparison of the strings should be done using unsigned 
-// characters. 
+/* ************************************************************************** */
 
-// 1st Parameter :	string 1
-// 2nd Parameter :	string 2
-// 3rd Parameter :	number of characters to compare.
-// Return values :	diff between string 1 and string 2. 
-
+/**
+ * @brief strncmp compares not more than n(3rd Parameter) characters from 
+ * s1(1st Parameter) and s2(2nd Parameter). Characters that appear after a '\0' 
+ * should not be compared. Comparison of the strings should be done using 
+ * unsigned characters. 
+ * 
+ * @param s1 
+ * @param s2 
+ * @param n 
+ * @return int 
+ */
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t			i;
@@ -45,3 +47,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
+
+/* ************************************************************************** */

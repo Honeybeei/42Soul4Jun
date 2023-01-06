@@ -6,20 +6,44 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 09:53:58 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:08 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 13:36:59 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Split the string s(1st Parameter) with a delimiter character del
-// (2nd Parameter). Each splitted string will be saved in an array of strings
-// and this array will be returned. This array also should be NULL terminated. 
+static size_t	string_counter(char *src, char c);
+static char		*my_strndup(char *src, size_t str_len);
+static void		termination_protocol(char **str_arr, size_t i_error);
+static char		**string_to_strings(char *src, char c, char **dst, size_t cnt);
 
-// 1st Parameter :	String to be split.
-// 2nd Parameter :	Delimiter character.
-// Return values :	Array of strings.
+/* ************************************************************************** */
+
+/**
+ * @brief Split the string s(1st Parameter) with a delimiter character del(2nd 
+ * Parameter). Each splitted string will be saved in an array of strings and 
+ * this array will be returned. This array also should be NULL terminated. 
+ * 
+ * @param s 
+ * @param c 
+ * @return char** 
+ */
+char	**ft_split(char const *s, char c)
+{
+	char	*src;
+	char	**str_arr;
+	size_t	str_count;
+
+	src = (char *)s;
+	str_count = string_counter(src, c);
+	str_arr = malloc(sizeof(char *) * (str_count + 1));
+	if (str_arr == NULL)
+		return (NULL);
+	str_arr = string_to_strings(src, c, str_arr, str_count);
+	return (str_arr);
+}
+
+/* ************************************************************************** */
 
 static size_t	string_counter(char *src, char c)
 {
@@ -49,6 +73,8 @@ static size_t	string_counter(char *src, char c)
 	return (count);
 }
 
+/* ************************************************************************** */
+
 static char	*my_strndup(char *src, size_t str_len)
 {
 	char	*dst;
@@ -67,6 +93,8 @@ static char	*my_strndup(char *src, size_t str_len)
 	return (dst);
 }
 
+/* ************************************************************************** */
+
 static void	termination_protocol(char **str_arr, size_t i_error)
 {
 	size_t	i;
@@ -80,13 +108,15 @@ static void	termination_protocol(char **str_arr, size_t i_error)
 	free(str_arr);
 }
 
-static char	**string_to_strings(char *src, char c, char **dst, size_t str_count)
+/* ************************************************************************** */
+
+static char	**string_to_strings(char *src, char c, char **dst, size_t cnt)
 {
 	size_t	i;
 	size_t	str_len;
 
 	i = 0;
-	while (i < str_count)
+	while (i < cnt)
 	{
 		str_len = 0;
 		while (*src == c)
@@ -106,17 +136,4 @@ static char	**string_to_strings(char *src, char c, char **dst, size_t str_count)
 	return (dst);
 }
 
-char	**ft_split(char const *s, char c)
-{
-	char	*src;
-	char	**str_arr;
-	size_t	str_count;
-
-	src = (char *)s;
-	str_count = string_counter(src, c);
-	str_arr = malloc(sizeof(char *) * (str_count + 1));
-	if (str_arr == NULL)
-		return (NULL);
-	str_arr = string_to_strings(src, c, str_arr, str_count);
-	return (str_arr);
-}
+/* ************************************************************************** */

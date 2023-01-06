@@ -6,20 +6,22 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 14:26:35 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:38:56 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/05 21:29:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Allocate count(1st Parameter) amount with size(2nd Parameter) bytes of memory
-// and and fill with bytes of zero.
+/* ************************************************************************** */
 
-// 1st Parameter :	Count of size(2nd Parameter) bytes to allocate.
-// 2nd Parameter :	Size of a single object.
-// Return values :	Pointer which has been mallocated. 
-
+/**
+ * @brief Allocate count(1st Parameter) amount with size(2nd Parameter) bytes of
+ *  memory and fill with zero.
+ * 
+ * @param count 
+ * @param size 
+ * @return void* 
+ */
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*dst;
@@ -31,3 +33,5 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_memset(dst, 0, count * size);
 	return (dst);
 }
+
+/* ************************************************************************** */

@@ -6,20 +6,42 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:58:47 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:10 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 11:08:45 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Outputs the integer n(1st Parameter) to the given file descriptor. 
+static void	put_pos_num(long long num, int fd);
 
-// 1st Parameter :	The integer to output.
-// 2nd Parameter :	The file descriptor on which to write. 
-// Return values :	None. 
+/* ************************************************************************** */
 
-static void	dispaly_pos_num(long long num, int fd)
+/**
+ * @brief Prints the integer n(1st Parameter) to the given file descriptor. 
+ * 
+ * @param n 
+ * @param fd 
+ */
+void	ft_putnbr_fd(int n, int fd)
+{
+	long long	num;
+
+	num = n;
+	if (num == 0)
+		write(fd, "0", 1);
+	else if (num < 0)
+	{
+		num *= -1;
+		write(fd, "-", 1);
+		put_pos_num(num, fd);
+	}
+	else
+		put_pos_num(num, fd);
+}
+
+/* ************************************************************************** */
+
+static void	put_pos_num(long long num, int fd)
 {
 	char	num_arr[20];
 	int		i;
@@ -34,19 +56,4 @@ static void	dispaly_pos_num(long long num, int fd)
 	write(fd, &num_arr[19 - i + 1], i);
 }
 
-void	ft_putnbr_fd(int n, int fd)
-{
-	long long	num;
-
-	num = n;
-	if (num == 0)
-		write(fd, "0", 1);
-	else if (num < 0)
-	{
-		num *= -1;
-		write(fd, "-", 1);
-		dispaly_pos_num(num, fd);
-	}
-	else
-		dispaly_pos_num(num, fd);
-}
+/* ************************************************************************** */

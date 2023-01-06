@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/05 14:40:08 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/05 21:19:37 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ LINKING = $(CC) $(CFLAGS) $(RDLINE)
 
 # main_function
 
-MAIN_FUNCTION_DIR = main_function/
+MAIN_FUNCTION_DIR = main/
 
 MAIN_FUNCTION_SRC_DIR = $(SRC_DIR)$(MAIN_FUNCTION_DIR)
 
@@ -64,24 +64,6 @@ MAIN_FUNCTION_OBJ_DIR = $(OBJ_DIR)$(MAIN_FUNCTION_DIR)
 MAIN_FUNCTION_OBJ_FILE = $(MAIN_FUNCTION_SRC_FILE:.c=.o)
 MAIN_FUNCTION_OBJS = $(addprefix $(MAIN_FUNCTION_OBJ_DIR), $(MAIN_FUNCTION_OBJ_FILE))
 OBJS += $(MAIN_FUNCTION_OBJS)
-
-# **************************************************************************** # 
-
-# conversion
-
-CONVERSION_DIR = conversion/
-
-# CONVERSION - src
-CONVERSION_SRC_DIR = $(SRC_DIR)$(CONVERSION_DIR)
-CONVERSION_SRC_FILE = \
-		token_list_conversion.c
-
-CONVERSION_SRCS = $(addprefix $(CONVERSION_SRC_DIR), $(CONVERSION_SRC_FILE))
-
-CONVERSION_OBJ_DIR = $(OBJ_DIR)$(CONVERSION_DIR)
-CONVERSION_OBJ_FILE = $(CONVERSION_SRC_FILE:.c=.o)
-CONVERSION_OBJS = $(addprefix $(CONVERSION_OBJ_DIR), $(CONVERSION_OBJ_FILE))
-OBJS_WITHOUT_MAIN += $(CONVERSION_OBJS)
 
 # **************************************************************************** # 
 
@@ -108,81 +90,6 @@ OBJS_WITHOUT_MAIN += $(ETC_OBJS)
 
 # **************************************************************************** #
 
-# execution
-
-EXECUTION_DIR = execution/
-
-# execution - src
-EXECUTION_SRC_DIR = $(SRC_DIR)$(EXECUTION_DIR)
-EXECUTION_SRC_FILE = \
-		execution_main.c \
-
-EXECUTION_SRCS = $(addprefix $(EXECUTION_SRC_DIR), $(EXECUTION_SRC_FILE))
-
-EXECUTION_OBJ_DIR = $(OBJ_DIR)$(EXECUTION_DIR)
-EXECUTION_OBJ_FILE = $(EXECUTION_SRC_FILE:.c=.o)
-EXECUTION_OBJS = $(addprefix $(EXECUTION_OBJ_DIR), $(EXECUTION_OBJ_FILE))
-OBJS_WITHOUT_MAIN += $(EXECUTION_OBJS)
-
-# **************************************************************************** #
-
-# libft_functions
-
-LIBFT_FUNCTIONS_DIR = libft_functions/
-
-# LIBFT_FUNCTIONS - src
-LIBFT_FUNCTIONS_SRC_DIR = $(SRC_DIR)$(LIBFT_FUNCTIONS_DIR)
-LIBFT_FUNCTIONS_SRC_FILE = \
-        str_functions_1.c \
-		str_functions_2.c
-
-LIBFT_FUNCTIONS_SRCS = $(addprefix $(LIBFT_FUNCTIONS_SRC_DIR), $(LIBFT_FUNCTIONS_SRC_FILE))
-
-LIBFT_FUNCTIONS_OBJ_DIR = $(OBJ_DIR)$(LIBFT_FUNCTIONS_DIR)
-LIBFT_FUNCTIONS_OBJ_FILE = $(LIBFT_FUNCTIONS_SRC_FILE:.c=.o)
-LIBFT_FUNCTIONS_OBJS = $(addprefix $(LIBFT_FUNCTIONS_OBJ_DIR), $(LIBFT_FUNCTIONS_OBJ_FILE))
-OBJS_WITHOUT_MAIN += $(LIBFT_FUNCTIONS_OBJS)
-
-# **************************************************************************** #
-
-# object_management
-
-OBJECT_MANAGEMENT_DIR = object_management/
-
-# OBJECT_MANAGEMENT - src
-OBJECT_MANAGEMENT_SRC_DIR = $(SRC_DIR)$(OBJECT_MANAGEMENT_DIR)
-OBJECT_MANAGEMENT_SRC_FILE = \
-		cmd_management.c \
-		token_management.c \
-		variable_management.c
-
-OBJECT_MANAGEMENT_SRCS = $(addprefix $(OBJECT_MANAGEMENT_SRC_DIR), $(OBJECT_MANAGEMENT_SRC_FILE))
-
-OBJECT_MANAGEMENT_OBJ_DIR = $(OBJ_DIR)$(OBJECT_MANAGEMENT_DIR)
-OBJECT_MANAGEMENT_OBJ_FILE = $(OBJECT_MANAGEMENT_SRC_FILE:.c=.o)
-OBJECT_MANAGEMENT_OBJS = $(addprefix $(OBJECT_MANAGEMENT_OBJ_DIR), $(OBJECT_MANAGEMENT_OBJ_FILE))
-OBJS_WITHOUT_MAIN += $(OBJECT_MANAGEMENT_OBJS)
-
-# **************************************************************************** #
-
-# tokenizer
-
-TOKENIZER_DIR = tokenizer/
-
-# TOKENIZER - src
-TOKENIZER_SRC_DIR = $(SRC_DIR)$(TOKENIZER_DIR)
-TOKENIZER_SRC_FILE = \
-		tokenizer.c
-
-TOKENIZER_SRCS = $(addprefix $(TOKENIZER_SRC_DIR), $(TOKENIZER_SRC_FILE))
-
-TOKENIZER_OBJ_DIR = $(OBJ_DIR)$(TOKENIZER_DIR)
-TOKENIZER_OBJ_FILE = $(TOKENIZER_SRC_FILE:.c=.o)
-TOKENIZER_OBJS = $(addprefix $(TOKENIZER_OBJ_DIR), $(TOKENIZER_OBJ_FILE))
-OBJS_WITHOUT_MAIN += $(TOKENIZER_OBJS)
-
-# **************************************************************************** #
-
 OBJS += $(OBJS_WITHOUT_MAIN)
 
 # **************************************************************************** #
@@ -200,29 +107,9 @@ $(MAIN_FUNCTION_OBJ_DIR)%.o : $(MAIN_FUNCTION_SRC_DIR)%.c
 	@mkdir -p $(MAIN_FUNCTION_OBJ_DIR)
 	$(COMPILE) -c $< -o $@ 
 
-$(CONVERSION_OBJ_DIR)%.o : $(CONVERSION_SRC_DIR)%.c
-	@mkdir -p $(CONVERSION_OBJ_DIR)
-	$(COMPILE) -c $< -o $@
-
 $(ETC_OBJ_DIR)%.o : $(ETC_SRC_DIR)%.c
 	@mkdir -p $(ETC_OBJ_DIR)
 	$(COMPILE) -c $< -o $@
-
-$(EXECUTION_OBJ_DIR)%.o : $(EXECUTION_SRC_DIR)%.c
-	@mkdir -p $(EXECUTION_OBJ_DIR)
-	$(COMPILE) -c $< -o $@
-
-$(LIBFT_FUNCTIONS_OBJ_DIR)%.o : $(LIBFT_FUNCTIONS_SRC_DIR)%.c
-	@mkdir -p $(LIBFT_FUNCTIONS_OBJ_DIR)
-	$(COMPILE) -c $< -o $@ 
-
-$(OBJECT_MANAGEMENT_OBJ_DIR)%.o : $(OBJECT_MANAGEMENT_SRC_DIR)%.c
-	@mkdir -p $(OBJECT_MANAGEMENT_OBJ_DIR)
-	$(COMPILE) -c $< -o $@
-
-$(TOKENIZER_OBJ_DIR)%.o : $(TOKENIZER_SRC_DIR)%.c
-	@mkdir -p $(TOKENIZER_OBJ_DIR)
-	$(COMPILE) -c $< -o $@ 
 
 # **************************************************************************** #
 
@@ -230,7 +117,7 @@ $(TOKENIZER_OBJ_DIR)%.o : $(TOKENIZER_SRC_DIR)%.c
 
 TEST_NAME = minishell_test.out
 TEST_SRC_FILE = \
-		minishell_test_main.c \
+		test_main.c \
 
 TEST_SRCS = $(addprefix $(TEST_DIR), $(TEST_SRC_FILE))
 

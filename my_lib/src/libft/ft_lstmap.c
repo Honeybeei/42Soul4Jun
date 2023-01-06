@@ -6,24 +6,25 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 22:40:35 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:50 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 10:58:32 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Iterates the list the list 'lst'(1st Parameter) and applies the function 'f'
-// (2nd Parameter) on the content of each node and Creates a new list resulting 
-// of the successice applications of the functions 'f'. 'del'(3rd Parameter) 
-// function is used to delete the content of a node if needed. 
+/* ************************************************************************** */
 
-// 1st Parameter :	The address of a pointer to a node. 
-// 2nd Parameter :	The address of a function used to iterate on the list. 
-// 3rd Parameter :	The address of the function used to delete the content of a 
-//					node if needed. 
-// Return values :	The new list. Return NULL if the allocation fails.
-
+/**
+ * @brief Iterates the list the list 'lst'(1st Parameter) and applies the 
+ * function 'f'(2nd Parameter) on the content of each node and Creates a new 
+ * list resulting of the successful applications of the functions 'f'. 'del'
+ * (3rd Parameter) function is used to delete the content of a node if needed.
+ * 
+ * @param lst 
+ * @param f 
+ * @param del 
+ * @return t_list* 
+ */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_node;
@@ -44,3 +45,5 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	new_node = NULL;
 	return (head_node);
 }
+
+/* ************************************************************************** */

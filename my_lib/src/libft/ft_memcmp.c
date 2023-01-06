@@ -6,22 +6,24 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:51:07 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:14 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 11:02:07 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Isn't this function identical with strncmp? The answer is No. strncmp returns
-// its value when '\0' occurs. However memcmp compares till n(3rd Parameter)
-// bytes even there is '\0' in the string. 
+/* ************************************************************************** */
 
-// 1st Parameter :	string 1
-// 2nd Parameter :	string 2
-// 3rd Parameter :	number of characters to compare.
-// Return values :	diff between string 1 and string 2. 
-
+/**
+ * @brief Isn't this function identical with strncmp? The answer is No. strncmp 
+ * returns its value when '\0' occurs. However memcmp compares till n(3rd 
+ * Parameter) bytes even there is '\0' in the string. 
+ * 
+ * @param s1 
+ * @param s2 
+ * @param n 
+ * @return int 
+ */
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t			i;

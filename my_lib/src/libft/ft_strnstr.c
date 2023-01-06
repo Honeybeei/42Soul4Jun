@@ -6,26 +6,30 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 10:11:05 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:01 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 13:29:08 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Finding a needle(2nd Parameter) in the haystack(1st Parameter) where not more
-// than len(3rd Parameter) characters. Characters that appear after a '\0' are 
-// not searched. 
+/* ************************************************************************** */
 
-// 1st Parameter :	Haystack ;)
-// 2nd Parameter :	Needle. In this case, its a string. 
-// 3rd Parameter :  len characters will be searched. 
-// Return values :	1. if needle(2nd Parameter) is empty string, haystack(1st 
-//					Parameter) will be returned. 
-//					2. if needle occures in haystack, the pointer to the first 
-//					character of the first occuring needle will be returned. 
-//					3. NULL will be returned if there are no needle in haystack.
-
+/**
+ * @brief Finding a needle(2nd Parameter) in the haystack(1st Parameter) where 
+ * no more then len(3rd Parameter) characters. Characters that appear after a 
+ * '\0' are not searched. 
+ * 
+ * @param haystack 
+ * @param needle 
+ * @param len 
+ * @return char* 
+ * 
+ * 1. if needle(2nd Parameter) is empty string, haystack(1st Parameter) will be 
+ * returned.
+ * 2. if needle occurs in haystack, the pointer to the first character of the 
+ * first occurring needle will be returned.
+ * 3. NULL will be returned if there are no needle in haystack.
+ */
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
@@ -53,3 +57,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
+
+/* ************************************************************************** */

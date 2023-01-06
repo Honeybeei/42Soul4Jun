@@ -6,23 +6,24 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 15:17:11 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:40:59 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 13:32:20 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Get a substring from string s(1st Parameter) starts from start(2nd parameter)
-// which is an index of the s and the maximum length of substring sould be len
-// (3rd parameter)
+/* ************************************************************************** */
 
-// 1st Parameter :	Original string which whill be the src of substring.
-// 2nd Parameter :	Index of 1st Parameter which will be the start of substring
-//					of s.
-// 3rd Parameter :	Maximum length of the substring.
-// Return values :	The substring.
-
+/**
+ * @brief Get a substring from string s(1st Parameter) starts from start(2nd 
+ * parameter) which is an index of the s and the maximum length of substring 
+ * should be len(3rd parameter)
+ * 
+ * @param s 
+ * @param start 
+ * @param len 
+ * @return char* 
+ */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dst;
@@ -38,3 +39,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	dst[len] = '\0';
 	return (dst);
 }
+
+/* ************************************************************************** */

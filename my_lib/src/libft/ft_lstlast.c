@@ -6,18 +6,20 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 21:03:39 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:51 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 10:56:47 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Returns the last Node of the list.
+/* ************************************************************************** */
 
-// 1st Parameter :	The beginning node if the list
-// Return values :	Last node of the list. 
-
+/**
+ * @brief Returns the last Node of the list.
+ * 
+ * @param lst 
+ * @return t_list* 
+ */
 t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*node_p;
@@ -29,3 +31,5 @@ t_list	*ft_lstlast(t_list *lst)
 		node_p = node_p->next;
 	return (node_p);
 }
+
+/* ************************************************************************** */

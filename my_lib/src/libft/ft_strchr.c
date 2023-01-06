@@ -6,22 +6,23 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 16:25:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:07 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 13:16:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Search for c(2nd Parameter) in the string(1st Parameter). It will return a 
-// pointer of the first occurence of the c(converted to cahr) or NULL if the 
-// character does not apperar in the string. 
+/* ************************************************************************** */
 
-// 1st Parameter :	Haystack ;)
-// 2nd Parameter :	Needle
-// Return values :	Pointer of the first occurence of the Needle or NULL if 
-// there is no Needle in the Haystack.
-
+/**
+ * @brief Search for c(2nd Parameter) in the string(1st Parameter). It will 
+ * return a pointer of the first occurrence of the c(converted to char) , 
+ * otherwise NULL will be returned if character does not appear in the string. 
+ * 
+ * @param s 
+ * @param c 
+ * @return char* 
+ */
 char	*ft_strchr(const char *s, int c)
 {
 	char	*p;
@@ -39,3 +40,5 @@ char	*ft_strchr(const char *s, int c)
 		return (p + i);
 	return (NULL);
 }
+
+/* ************************************************************************** */

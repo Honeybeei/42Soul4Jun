@@ -6,18 +6,20 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 20:56:20 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:49 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 10:59:55 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Counts the number of nodes in a list(1st Parameter)
+/* ************************************************************************** */
 
-// 1st Parameter :	Head node of the list.
-// Return values :	Node count.
-
+/**
+ * @brief Counts the number of nodes in a list(1st Parameter)
+ * 
+ * @param lst 
+ * @return int 
+ */
 int	ft_lstsize(t_list *lst)
 {
 	t_list	*node_p;
@@ -32,3 +34,5 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (count);
 }
+
+/* ************************************************************************** */

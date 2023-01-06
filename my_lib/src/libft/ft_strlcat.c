@@ -6,24 +6,26 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 13:05:28 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:05 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 13:19:56 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Same as strncat but much safer. Appends string src(2nd Parameter) to the end 
-// of the dst(1st Parameter). It will append at most dstsize(3rd Parameter) - 
-// strlen(dst) - 1 characters. It will then NUL terminate. It will not work if 
-// the dstsize is 0 or the original dst string was longer than dstsize. The 
-// behavior is undifined when the src and dst strings overlaps.
+/* ************************************************************************** */
 
-// 1st Parameter :	The address of the destination memory area.
-// 2nd Parameter :	The address of the source memory area.
-// 3rd Parameter :	Size of destination buffer. 
-// Return values :	Initial length of dst + length of src
-
+/**
+ * @brief Same as strncat but much safer. Appends string src(2nd Parameter) to 
+ * the end of the dst(1st Parameter). It will append at most dstsize(3rd 
+ * Parameter) - strlen(dst) - 1 characters. It will then NUL terminate. It will 
+ * not work if the dstsize is 0 or the original dst string was longer than 
+ * dstsize. The behavior is undefined when the src and dst strings overlaps.
+ * 
+ * @param dst 
+ * @param src 
+ * @param dstsize 
+ * @return size_t 
+ */
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	dst_len;
@@ -50,3 +52,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		dst_len = dstsize;
 	return (dst_len + src_len);
 }
+
+/* ************************************************************************** */

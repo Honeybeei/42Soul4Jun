@@ -6,36 +6,24 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 14:14:01 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/08/04 20:34:02 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/05 21:24:37 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft.h"
 
-// Discription
-// Converts string in to integer. Only (white spaces)(a single + or - sign)
-// (dicimal numbers) structure is allowd. If other character occur before 
-// decimal numbers, this function will return 0.
+static int	char_filter(char c);
 
-// 1st Parameter :	String to be converted
-// Return values :	Int ranged value.
+/* ************************************************************************** */
 
-static int	char_filter(char c)
-{
-	if (c == '\t' || c == '\n' || c == '\v')
-		return (0);
-	else if (c == '\f' || c == '\r' || c == ' ')
-		return (0);
-	else if (c == '-')
-		return (-1);
-	else if (c == '+')
-		return (1);
-	else if ('0' <= c && c <= '9')
-		return (2);
-	else
-		return (3);
-}
-
+/**
+ * @brief Convert string to integer. Only white spaces, a single + or - sign and
+ *  decimal numbers are allowed in string. If there are any other type of 
+ * characters, it will return 0. 
+ * 
+ * @param str 
+ * @return int 
+ */
 int	ft_atoi(const char *str)
 {
 	char				*temp;
@@ -64,3 +52,23 @@ int	ft_atoi(const char *str)
 		return (0);
 	return ((int)result * plus_minus_sign);
 }
+
+/* ************************************************************************** */
+
+static int	char_filter(char c)
+{
+	if (c == '\t' || c == '\n' || c == '\v')
+		return (0);
+	else if (c == '\f' || c == '\r' || c == ' ')
+		return (0);
+	else if (c == '-')
+		return (-1);
+	else if (c == '+')
+		return (1);
+	else if ('0' <= c && c <= '9')
+		return (2);
+	else
+		return (3);
+}
+
+/* ************************************************************************** */
