@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   my_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/14 21:09:30 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/05 21:35:16 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/06 16:39:23 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/06 16:52:47 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libft.h"
+#include "../../inc/my_str.h"
 
 /* ************************************************************************** */
 
-/**
- * @brief Add the node 'new'(2nd Parameter) at the end of the list. 
- * 
- * @param lst 
- * @param new 
- */
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	my_strcmp(const char *str1, const char *str2)
 {
-	if (*lst == NULL)
-		*lst = new;
+	size_t	len1;
+	size_t	len2;
+
+	len1 = ft_strlen(str1);
+	len2 = ft_strlen(str2);
+	if (len1 == len2)
+		return (ft_strncmp(str1, str2, len1));
 	else
-		ft_lstlast(*lst)->next = new;
+		return ((int)(len1 - len2));
 }
 
 /* ************************************************************************** */

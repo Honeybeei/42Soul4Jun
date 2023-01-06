@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 01:52:25 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/06 13:42:16 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/06 16:52:18 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,24 @@ OBJS += $(LIBFT_OBJS)
 
 # **************************************************************************** #
 
+# my_str
+MY_STR_DIR = my_str/
+
+# my_str source
+MY_STR_SRC_DIR = $(SRC_DIR)$(MY_STR_DIR)
+MY_STR_SRC_FILE = \
+		my_strcmp.c
+
+MY_STR_SRCS = $(addprefix $(MY_STR_SRC_DIR), $(MY_STR_SRC_FILE))
+
+# my_str object
+MY_STR_OBJ_DIR = $(OBJ_DIR)$(MY_STR_DIR)
+MY_STR_OBJ_FILE = $(MY_STR_SRC_FILE:.c=.o)
+MY_STR_OBJS = $(addprefix $(MY_STR_OBJ_DIR), $(MY_STR_OBJ_FILE)) 
+OBJS += $(MY_STR_OBJS)
+
+# **************************************************************************** #
+
 # rules
 all: $(NAME)
 
@@ -114,6 +132,10 @@ $(NAME) : $(OBJS)
 
 $(LIBFT_OBJ_DIR)%.o : $(LIBFT_SRC_DIR)%.c
 	@mkdir -p $(LIBFT_OBJ_DIR)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(MY_STR_OBJ_DIR)%.o : $(MY_STR_SRC_DIR)%.c
+	@mkdir -p $(MY_STR_OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:

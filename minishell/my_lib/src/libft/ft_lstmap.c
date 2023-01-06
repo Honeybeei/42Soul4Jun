@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 22:40:35 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 14:11:53 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 10:58:32 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@
  * @param del 
  * @return t_list* 
  */
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void
-		(*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_node;
 	t_list	*head_node;

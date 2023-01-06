@@ -3,9 +3,13 @@
         "readline.h": "c",
         "stdbool.h": "c",
         "minishell.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "stdlib.h": "c",
+        "errno.h": "c"
     },
     "cSpell.words": [
+        "ft_putstr_fd",
+        "minishell",
         "seoyoo"
     ]
 }

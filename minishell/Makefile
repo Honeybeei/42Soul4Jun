@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/06 14:14:17 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/06 16:11:50 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,9 +76,12 @@ OBJS += $(MAIN_FUNCTION_OBJS)
 
 ETC_DIR = etc/
 
-# etc - src
 ETC_SRC_DIR = $(SRC_DIR)$(ETC_DIR)
-ETC_SRC_FILE = 
+ETC_SRC_FILE = \
+		error_handler.c \
+		s_variable.c \
+		safe_malloc.c \
+		start_shell.c
 
 ETC_SRCS = $(addprefix $(ETC_SRC_DIR), $(ETC_SRC_FILE))
 
