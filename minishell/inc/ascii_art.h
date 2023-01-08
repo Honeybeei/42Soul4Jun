@@ -6,14 +6,14 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:15:41 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/17 13:14:02 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/06 23:46:08 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASCII_ART_H
 # define ASCII_ART_H
 
-# define ENTRANCE_ASCII "\
+# define BANNER_ASCII_STR "\
           _____                    _____                    _____          \n\
          /\\    \\                  /\\    \\                  /\\    \\         \n\
         /::\\    \\                /::\\    \\                /::\\____\\        \n\

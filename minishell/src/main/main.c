@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 21:46:02 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 11:01:17 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdio.h>	//	for test
+
+/* ************************************************************************** */
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -24,14 +26,15 @@ int	main(int argc, char **argv, char **envp)
 		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
-	start_shell(envp);	// print_banner, init signals, init ptrs
+	start_shell(envp);
 	while (true)
 	{
-		// g_ptrs.user_input_ = get_user_input();
-		// tokenize_input()
-		// parse_tokens()
-		// if valid -> execute commands
-		//	else -> error management
+		tokenize_input(&g_ptrs.tkn_lst_);
+		// if (parse_tokens() == fail_)
+		// 	error_management();
+		// else
+		// 	execute_commands();
+		// clear_loop();
 	}
 	return (0);
 }

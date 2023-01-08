@@ -6,11 +6,13 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:48:02 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 19:38:02 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/07 13:59:21 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+static char	**split_envp_str(char *envp_str, char **splitted_envp);
 
 /* ************************************************************************** */
 
@@ -48,6 +50,56 @@ void	clear_var_lst(t_var_lst *var_lst)
 		terminate_var_nd(del_nd);
 	}
 	var_lst->var_cnt_ = 0;
+}
+
+/* ************************************************************************** */
+
+/**
+ * @brief Push envp to variable list. 
+ * 
+ * @param envp 
+ * @param var_list 
+ */
+void	push_envp_to_var_lst(char **envp, t_var_lst *var_list)
+{
+	size_t	i;
+	char	*splitted_envp[2];
+
+	i = 0;
+	while (envp[i] != NULL)
+	{
+		split_envp_str(envp[i], splitted_envp);
+		push_var_to_lst(var_list, splitted_envp[0], splitted_envp[1]);
+		free(splitted_envp[0]);
+		free(splitted_envp[1]);
+		i++;
+	}
+}
+
+/* ************************************************************************** */
+
+static char	**split_envp_str(char *envp_str, char **splitted_envp)
+{
+	size_t	idx;
+	char	*val_str_start;
+	size_t	val_str_len;
+
+	idx = 0;
+	while (envp_str[idx] != '\0')
+	{
+		if (envp_str[idx] == '=')
+		{
+			splitted_envp[0] = calloc_safe(idx + 1, sizeof(char));
+			ft_strlcpy(splitted_envp[0], envp_str, idx + 1);
+			val_str_start = envp_str + idx + 1;
+			val_str_len = ft_strlen(val_str_start);
+			splitted_envp[1] = calloc_safe(val_str_len + 1, sizeof(char));
+			ft_strlcpy(splitted_envp[1], val_str_start, val_str_len + 1);
+			return (splitted_envp);
+		}
+		idx++;
+	}
+	return (NULL);
 }
 
 /* ************************************************************************** */

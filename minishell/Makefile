@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/06 19:43:04 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/07 18:58:05 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ TEST_DIR = ./test/
 # compiling options
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-DBFLAG = -g
+DBFLAG = -g3
 RDLINE = -lreadline
 OPTIMMIZATION = -O3
 INC = -I $(INC_DIR)
@@ -79,6 +79,7 @@ ETC_DIR = etc/
 ETC_SRC_DIR = $(SRC_DIR)$(ETC_DIR)
 ETC_SRC_FILE = \
 		error_handler.c \
+		s_token_1.c \
 		s_variable_1.c \
 		s_variable_2.c \
 		safe_malloc.c \
@@ -90,6 +91,23 @@ ETC_OBJ_DIR = $(OBJ_DIR)$(ETC_DIR)
 ETC_OBJ_FILE = $(ETC_SRC_FILE:.c=.o)
 ETC_OBJS = $(addprefix $(ETC_OBJ_DIR), $(ETC_OBJ_FILE))
 OBJS_WITHOUT_MAIN += $(ETC_OBJS)
+
+# **************************************************************************** #
+
+# tokenize
+
+TOKENIZE_DIR = tokenize/
+
+TOKENIZE_SRC_DIR = $(SRC_DIR)$(TOKENIZE_DIR)
+TOKENIZE_SRC_FILE = \
+		tokenize_1.c
+
+TOKENIZE_SRCS = $(addprefix $(TOKENIZE_SRC_DIR), $(TOKENIZE_SRC_FILE))
+
+TOKENIZE_OBJ_DIR = $(OBJ_DIR)$(TOKENIZE_DIR)
+TOKENIZE_OBJ_FILE = $(TOKENIZE_SRC_FILE:.c=.o)
+TOKENIZE_OBJS = $(addprefix $(TOKENIZE_OBJ_DIR), $(TOKENIZE_OBJ_FILE))
+OBJS_WITHOUT_MAIN += $(TOKENIZE_OBJS)
 
 # **************************************************************************** #
 
@@ -114,6 +132,10 @@ $(MAIN_FUNCTION_OBJ_DIR)%.o : $(MAIN_FUNCTION_SRC_DIR)%.c
 
 $(ETC_OBJ_DIR)%.o : $(ETC_SRC_DIR)%.c
 	@mkdir -p $(ETC_OBJ_DIR)
+	$(COMPILE) -c $< -o $@
+
+$(TOKENIZE_OBJ_DIR)%.o : $(TOKENIZE_SRC_DIR)%.c
+	@mkdir -p $(TOKENIZE_OBJ_DIR)
 	$(COMPILE) -c $< -o $@
 
 # **************************************************************************** #
