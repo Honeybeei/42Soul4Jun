@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   my_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 15:03:40 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/08 17:55:48 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/08 18:22:47 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../inc/improved_libft.h"
 
 /* ************************************************************************** */
 
-#include <stdio.h>	//	for test
-
-/* ************************************************************************** */
-
-int	main(int argc, char **argv, char **envp)
+/**
+ * @brief NULL guarded customized malloc. If exit function is able to use, it 
+ * will exit when malloc fails.
+ * 
+ * @param size 
+ * @return void* 
+ */
+void	*my_malloc(size_t size)
 {
-	(void)argv;
-	if (argc > 1)
+	void	*ret;
+
+	ret = malloc(size);
+	if (ret == NULL)
 	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		if (CAN_USE_PERROR_F_)
+			perror(NULL);
+		if (CAN_USE_EXIT_F_)
+			exit(EXIT_FAILURE);
 	}
-	start_shell(envp);
-	while (true)
-	{
-		tokenize_input(&g_ptrs.tkn_lst_); // in progress
-		print_token_list(&g_ptrs.tkn_lst_);  // TEST
-		// if (parse_tokens() == fail_)
-		// 	error_management();
-		// else
-		// 	execute_commands();
-		clear_loop();
-	}
-	return (0);
+	return (ret);
 }
 
 /* ************************************************************************** */

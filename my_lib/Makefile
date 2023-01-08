@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 01:52:25 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/06 16:52:18 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/08 18:17:35 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,21 +106,24 @@ OBJS += $(LIBFT_OBJS)
 
 # **************************************************************************** #
 
-# my_str
-MY_STR_DIR = my_str/
+# improved_libft
+IMPROVED_LIBFT_DIR = improved_libft/
 
-# my_str source
-MY_STR_SRC_DIR = $(SRC_DIR)$(MY_STR_DIR)
-MY_STR_SRC_FILE = \
-		my_strcmp.c
+# IMPROVED_LIBFT source
+IMPROVED_LIBFT_SRC_DIR = $(SRC_DIR)$(IMPROVED_LIBFT_DIR)
+IMPROVED_LIBFT_SRC_FILE = \
+		my_calloc.c \
+		my_malloc.c \
+		my_strcmp.c \
+		my_strndup.c
 
-MY_STR_SRCS = $(addprefix $(MY_STR_SRC_DIR), $(MY_STR_SRC_FILE))
+IMPROVED_LIBFT_SRCS = $(addprefix $(IMPROVED_LIBFT_SRC_DIR), $(IMPROVED_LIBFT_SRC_FILE))
 
-# my_str object
-MY_STR_OBJ_DIR = $(OBJ_DIR)$(MY_STR_DIR)
-MY_STR_OBJ_FILE = $(MY_STR_SRC_FILE:.c=.o)
-MY_STR_OBJS = $(addprefix $(MY_STR_OBJ_DIR), $(MY_STR_OBJ_FILE)) 
-OBJS += $(MY_STR_OBJS)
+# improved_libft object
+IMPROVED_LIBFT_OBJ_DIR = $(OBJ_DIR)$(IMPROVED_LIBFT_DIR)
+IMPROVED_LIBFT_OBJ_FILE = $(IMPROVED_LIBFT_SRC_FILE:.c=.o)
+IMPROVED_LIBFT_OBJS = $(addprefix $(IMPROVED_LIBFT_OBJ_DIR), $(IMPROVED_LIBFT_OBJ_FILE)) 
+OBJS += $(IMPROVED_LIBFT_OBJS)
 
 # **************************************************************************** #
 
@@ -134,8 +137,8 @@ $(LIBFT_OBJ_DIR)%.o : $(LIBFT_SRC_DIR)%.c
 	@mkdir -p $(LIBFT_OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(MY_STR_OBJ_DIR)%.o : $(MY_STR_SRC_DIR)%.c
-	@mkdir -p $(MY_STR_OBJ_DIR)
+$(IMPROVED_LIBFT_OBJ_DIR)%.o : $(IMPROVED_LIBFT_SRC_DIR)%.c
+	@mkdir -p $(IMPROVED_LIBFT_OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:

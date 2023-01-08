@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 11:39:47 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 16:59:27 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,23 @@
 
 /* ************************************************************************** */
 
-# define PROMPT_STR "Jsh -> "
+# define PROMPT_STR_ "Jsh -> "
 
-# define META_CHAR "<>|"
-//	There are more meta-characters but in minishell, only this three will be 
-//	treated as a meta-character. 
+# define OPERATIONAL_CHAR_ "<>|"
+# define ETC_META_CHAR_ "\"\'$"
+
+# define OP_PIPE_ "|"
+# define OP_REDIR_IN_1_ "<"
+# define OP_REDIR_IN_2_ "<<"
+# define OP_REDIR_OUT_1_ ">"
+# define OP_REDIR_OUT_2_ ">>"
 
 /* ************************************************************************** */
 
 typedef enum e_customized_error_number
 {
-	err_no_errors_ = 0
+	errno_no_errors_ = 0,
+	errno_tokenize_no_matching_operator_
 }	t_errno;
 
 typedef enum e_customized_boolean
@@ -49,16 +55,36 @@ typedef enum e_customized_boolean
 	fail_ = 1
 }	t_bool;
 
+typedef enum e_flag
+{
+	up_ = -1,
+	down_ = 1
+}	t_flag;
+
+/* ************************************************************************** */
+
+// FUUUCCCCKKKKING IMPORTANT!!
+ 
+ /**
+  * @brief If new struct type added, add initialize functions
+  * 1. initialize_global_variable() in start_shell.c
+  * 2. clear_loop() in clear_loop.c 
+  * 
+  */
+
+
+
 /* ************************************************************************** */
 
 //	TOKEN
 
+// If operation token type is modified, push_operator() in tokenize_2.c should
+// also be modified. Also define part of this file which saves the char of 
+// operators should be modified. 
 typedef enum e_token_type
 {
 	none_ = 0,			//	init value
-	wd_non_quoted_,
-	wd_single_quoted_,
-	wd_double_quoted_,
+	wd_,	// initial value of word
 	op_pipe_,			//	'|'
 	op_redirect_in_1_,	// 	'<'
 	op_redirect_in_2_,	// 	'<<'
@@ -81,7 +107,6 @@ typedef struct s_token_list
 	t_tkn_nd	*tail_;
 	size_t		tkn_cnt_;
 }	t_tkn_lst;
-
 
 
 /* ************************************************************************** */
@@ -162,13 +187,18 @@ t_ptrs g_ptrs;
 
 //	etc
 
+//		clear_loop.c
+void		clear_loop(void);
+
 //		error_handler.c
-void		set_t_errno(t_errno errno);
+void		set_t_errno(t_errno error_number);
+void		print_error(t_errno error_number);
+void		error_handler(t_errno error_number, bool reset_errno);
 
 //		s_token_1.c
 void		initialize_tkn_lst(t_tkn_lst *tkn_lst);
 void		clear_tkn_lst(t_tkn_lst *tkn_lst);
-void		push_tkn_nd_to_lst(t_tkn_lst *tkn_lst, const char *str, t_t_type type);
+size_t		push_tkn_nd_to_lst(t_tkn_lst *tkn_lst, const char *str, t_t_type type);
 
 //		s_variable_1.c
 void		terminate_var_nd(t_var_nd *del_nd);
@@ -192,10 +222,25 @@ void		initialize_global_variable(char **envp);
 void		handle_signals(void);
 void		signal_handler(int signo);
 
+//		utils_for_test.c
+void		print_token_list(t_tkn_lst *lst);
+
+
+
 /* ************************************************************************** */
 //	tokenize
 
 //		tokenize_1.c
 void		tokenize_input(t_tkn_lst *lst);
+void		split_input_to_tokens(char *user_input, t_tkn_lst *lst);
+bool		is_white_space(unsigned char c);
+bool		is_operator(unsigned char c);
+bool		is_meta_char(unsigned char c);
+
+//		tokenize_2.c
+size_t		push_operator(t_tkn_lst *lst, char *str_ptr);
+size_t		push_word(t_tkn_lst *lst, char *str_ptr);
+
+/* ************************************************************************** */
 
 #endif

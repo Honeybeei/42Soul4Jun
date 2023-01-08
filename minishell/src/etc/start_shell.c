@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:13:37 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 11:05:56 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 13:06:00 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	print_banner(void)
 void	initialize_global_variable(char **envp)
 {
 	g_ptrs.envp_ = envp;
-	g_ptrs.errno_ = err_no_errors_;
+	g_ptrs.errno_ = errno_no_errors_;
 	g_ptrs.exit_status_ = 0;
 	initialize_var_lst(&g_ptrs.var_lst_);
 	push_envp_to_var_lst(envp, &g_ptrs.var_lst_);

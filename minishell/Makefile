@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/07 18:58:05 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/08 16:27:42 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,12 +78,14 @@ ETC_DIR = etc/
 
 ETC_SRC_DIR = $(SRC_DIR)$(ETC_DIR)
 ETC_SRC_FILE = \
+		clear_and_termination.c \
 		error_handler.c \
 		s_token_1.c \
 		s_variable_1.c \
 		s_variable_2.c \
 		safe_malloc.c \
-		start_shell.c
+		start_shell.c \
+		utils_for_test.c
 
 ETC_SRCS = $(addprefix $(ETC_SRC_DIR), $(ETC_SRC_FILE))
 
@@ -100,7 +102,8 @@ TOKENIZE_DIR = tokenize/
 
 TOKENIZE_SRC_DIR = $(SRC_DIR)$(TOKENIZE_DIR)
 TOKENIZE_SRC_FILE = \
-		tokenize_1.c
+		tokenize_1.c \
+		tokenize_2.c
 
 TOKENIZE_SRCS = $(addprefix $(TOKENIZE_SRC_DIR), $(TOKENIZE_SRC_FILE))
 
@@ -181,6 +184,9 @@ run : all
 
 norm : 
 	@norminette ./src ./inc
+
+norm25 :
+	@make norm | grep "Function has more than 25 lines"
 
 mylib :
 	@make -C $(MY_LIB_DIR)

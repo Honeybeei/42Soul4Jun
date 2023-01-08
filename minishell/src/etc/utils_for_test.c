@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils_for_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 15:03:40 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/08 14:54:35 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/08 15:12:23 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,22 @@
 
 /* ************************************************************************** */
 
-#include <stdio.h>	//	for test
-
-/* ************************************************************************** */
-
-int	main(int argc, char **argv, char **envp)
+void	print_token_list(t_tkn_lst *lst)
 {
-	(void)argv;
-	if (argc > 1)
+	t_tkn_nd	*nd_ptr;
+
+	printf("\ntoken list info | tkn cnt : %zu | \n", lst->tkn_cnt_);
+	nd_ptr = lst->head_;
+	while (nd_ptr != NULL)
 	{
-		ft_putstr_fd("No arguments allowed for minishell...", STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		printf("[%s] - type : %d\n", nd_ptr->val_, nd_ptr->type_);
+		nd_ptr = nd_ptr->next_;
 	}
-	start_shell(envp);
-	while (true)
-	{
-		tokenize_input(&g_ptrs.tkn_lst_); // in progress
-		print_token_list(&g_ptrs.tkn_lst_);  // TEST
-		// if (parse_tokens() == fail_)
-		// 	error_management();
-		// else
-		// 	execute_commands();
-		clear_loop();
-	}
-	return (0);
+	printf("\n\n");
 }
 
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* ************************************************************************** */
 /* ************************************************************************** */

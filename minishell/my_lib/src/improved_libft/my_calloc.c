@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_strcmp.c                                        :+:      :+:    :+:   */
+/*   my_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 16:39:23 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 16:52:47 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/08 18:08:31 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/08 18:24:23 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/my_str.h"
+#include "../../inc/improved_libft.h"
 
 /* ************************************************************************** */
 
-int	my_strcmp(const char *str1, const char *str2)
+/**
+ * @brief NULL guarded customized calloc. If exit function is able to use, it 
+ * will exit when calloc fails.
+ * 
+ * @param count 
+ * @param size 
+ * @return void* 
+ */
+void	*my_calloc(size_t count, size_t size)
 {
-	size_t	len1;
-	size_t	len2;
-
-	len1 = ft_strlen(str1);
-	len2 = ft_strlen(str2);
-	if (len1 == len2)
-		return (ft_strncmp(str1, str2, len1));
-	else
-		return ((int)(len1 - len2));
+	void	*ret;
+	ret = ft_calloc(count, size);
+	if (ret == NULL)
+	{
+		if (CAN_USE_PERROR_F_)
+			perror(NULL);
+		if (CAN_USE_EXIT_F_)
+			exit(EXIT_FAILURE);
+	}
+	return (ret);
 }
 
 /* ************************************************************************** */

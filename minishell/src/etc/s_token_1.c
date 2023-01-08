@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:14:15 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 11:01:29 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 12:50:45 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,14 @@ static void	terminate_tkn_nd(t_tkn_nd *del_nd)
  * @brief Push new token node to the tail of the token tkn_lst(param 1).
  * 
  * @note str(param2) will be duplicated(ft_strdup) to the token node. Therefore,
- *  it should be freed before the process ends.
+ *  if str(param2) is malloced str, it should be freed before the process ends.
  * 
  * @param tkn_lst 
  * @param str 
  * @param type 
+ * @return size_t 
  */
-void	push_tkn_nd_to_lst(t_tkn_lst *tkn_lst, const char *str, t_t_type type)
+size_t	push_tkn_nd_to_lst(t_tkn_lst *tkn_lst, const char *str, t_t_type type)
 {
 	t_tkn_nd	*new_node;
 
@@ -107,6 +108,7 @@ void	push_tkn_nd_to_lst(t_tkn_lst *tkn_lst, const char *str, t_t_type type)
 		tkn_lst->tail_ = new_node;
 	}
 	tkn_lst->tkn_cnt_++;
+	return (ft_strlen(str));
 }
 
 /* ************************************************************************** */
