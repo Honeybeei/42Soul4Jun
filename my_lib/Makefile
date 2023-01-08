@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 01:52:25 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/08 18:17:35 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/08 18:41:10 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,6 +132,7 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
+	@printf "$(Green)\n[ my_lib compile finished!!] \n$(Color_Off)"
 
 $(LIBFT_OBJ_DIR)%.o : $(LIBFT_SRC_DIR)%.c
 	@mkdir -p $(LIBFT_OBJ_DIR)

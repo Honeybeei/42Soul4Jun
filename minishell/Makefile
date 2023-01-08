@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/08 16:27:42 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/08 21:13:23 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ MY_LIB = $(MY_LIB_DIR)$(MY_LIB_ARC)
 # COMPILE = $(CC) $(CFLAGS) $(OPTIMMIZATION) # -> this will be the final flag
 COMPILE = $(CC) $(CFLAGS) $(DBFLAG)
 # LINKING = $(CC) $(CFLAGS) $(INC)  # incase for error
-LINKING = $(CC) $(CFLAGS) $(RDLINE) $(MY_LIB)
+LINKING = $(CC) $(CFLAGS) $(RDLINE) $(MY_LIB) $(DBFLAG)
 
 # **************************************************************************** #
 
@@ -83,7 +83,6 @@ ETC_SRC_FILE = \
 		s_token_1.c \
 		s_variable_1.c \
 		s_variable_2.c \
-		safe_malloc.c \
 		start_shell.c \
 		utils_for_test.c
 
@@ -120,12 +119,11 @@ OBJS += $(OBJS_WITHOUT_MAIN)
 
 # main rules
 
-all : $(NAME)
+all : mylib $(NAME)
 
 $(NAME) : $(OBJS)
-	@make mylib
-	@printf "$(Green)\n[ my_lib compile finished!!] \n$(Color_Off)"
 	$(LINKING) -o $@ $^
+	@printf "$(Green)\n[ Minishell compile finished!!] \n$(Color_Off)"
 
 # add rules to compile src file in each folders
 
@@ -145,7 +143,7 @@ $(TOKENIZE_OBJ_DIR)%.o : $(TOKENIZE_SRC_DIR)%.c
 
 # test
 
-TEST_NAME = minishell_test.out
+TEST_NAME = a.out
 TEST_SRC_FILE = \
 		test_main.c \
 

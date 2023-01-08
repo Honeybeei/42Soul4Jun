@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/10 01:52:25 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/08 18:17:35 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/08 19:40:18 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,8 +114,10 @@ IMPROVED_LIBFT_SRC_DIR = $(SRC_DIR)$(IMPROVED_LIBFT_DIR)
 IMPROVED_LIBFT_SRC_FILE = \
 		my_calloc.c \
 		my_malloc.c \
+		my_strarrjoin.c \
 		my_strcmp.c \
-		my_strndup.c
+		my_strndup.c \
+		my_strtransplant.c
 
 IMPROVED_LIBFT_SRCS = $(addprefix $(IMPROVED_LIBFT_SRC_DIR), $(IMPROVED_LIBFT_SRC_FILE))
 
@@ -132,6 +134,7 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
+	@printf "$(Green)\n[ my_lib compile finished!!] \n$(Color_Off)"
 
 $(LIBFT_OBJ_DIR)%.o : $(LIBFT_SRC_DIR)%.c
 	@mkdir -p $(LIBFT_OBJ_DIR)

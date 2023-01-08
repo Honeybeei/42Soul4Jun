@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:48:02 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 19:39:44 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 18:35:58 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_var_nd	*create_var_nd(void);
 
 static t_var_nd	*create_var_nd(void)
 {
-	return (calloc_safe(1, sizeof(t_var_nd)));
+	return (my_calloc(1, sizeof(t_var_nd)));
 }
 
 /* ************************************************************************** */

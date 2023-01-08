@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 15:48:02 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/07 13:59:21 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 18:35:35 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ static char	**split_envp_str(char *envp_str, char **splitted_envp)
 	{
 		if (envp_str[idx] == '=')
 		{
-			splitted_envp[0] = calloc_safe(idx + 1, sizeof(char));
+			splitted_envp[0] = my_calloc(idx + 1, sizeof(char));
 			ft_strlcpy(splitted_envp[0], envp_str, idx + 1);
 			val_str_start = envp_str + idx + 1;
 			val_str_len = ft_strlen(val_str_start);
-			splitted_envp[1] = calloc_safe(val_str_len + 1, sizeof(char));
+			splitted_envp[1] = my_calloc(val_str_len + 1, sizeof(char));
 			ft_strlcpy(splitted_envp[1], val_str_start, val_str_len + 1);
 			return (splitted_envp);
 		}

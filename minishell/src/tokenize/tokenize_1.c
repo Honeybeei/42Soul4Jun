@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:26:22 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 17:26:43 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 22:15:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,17 @@ void	tokenize_input(t_tkn_lst *lst)
 	{
 		printf("user input : [%s]\n", user_input);  // TEST
 		split_input_to_tokens(user_input, lst);
+		print_token_list(lst);  // TEST
 		convert_variables(lst);
+		print_token_list(lst);  // TEST
 		// convert_quoted_strings();	//	TODO
+		free(user_input);
 	}
 	else
 	{
+		// readline function returns NULL when EOF enters. 
 		printf("user input : NULL -> EOF\n");  // TEST
 	}
-	free(user_input);
 }
 
 /* ************************************************************************** */
@@ -50,7 +53,6 @@ void	split_input_to_tokens(char *user_input, t_tkn_lst *lst)
 		else
 			i += push_word(lst, &user_input[i]);
 	}
-	
 }
 
 /* ************************************************************************** */

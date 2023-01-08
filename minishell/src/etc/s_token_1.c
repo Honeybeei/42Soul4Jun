@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:14:15 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 12:50:45 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 18:35:27 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static t_tkn_nd	*create_tkn_nd(void)
 {
 	t_tkn_nd	*new_node;
 
-	new_node = calloc_safe(1, sizeof(t_tkn_nd));
+	new_node = my_calloc(1, sizeof(t_tkn_nd));
 	new_node->type_ = none_;
 	return (new_node);
 }

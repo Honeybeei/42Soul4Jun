@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:11:42 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/06 19:44:47 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 21:38:48 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@ int	main(int argc, char **argv, char **envp)
 {
 	(void)argc;
 	(void)argv;
-	(void)envp;
+	// (void)envp;
 	printf("\n\nEntered Testing area\n\n");
 
-	t_var_lst lst;
-
-	initialize_var_lst(&lst);
-	push_var_to_lst(&lst, "Hello", "world");
-	push_var_to_lst(&lst, "Helloa", "worlda");
-	push_var_to_lst(&lst, "Hello", "world");
-	push_var_to_lst(&lst, "Hello", "world");
-	printf("%s : %s, %zu", lst.head_->name_, lst.head_->val_, lst.var_cnt_);
-	return (0);
+	initialize_global_variable(envp);
+	char *user_input = "Hellloo $PWD";
+	split_input_to_tokens(user_input, &g_ptrs.tkn_lst_);
+	print_token_list(&g_ptrs.tkn_lst_);
+	printf("\n\n\n\n\n\n\n");
+	convert_variables(&g_ptrs.tkn_lst_);
+	print_token_list(&g_ptrs.tkn_lst_);
 }

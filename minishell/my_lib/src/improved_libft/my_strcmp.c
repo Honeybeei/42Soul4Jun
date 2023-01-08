@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:39:23 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 18:06:10 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 21:56:24 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	my_strcmp(const char *str1, const char *str2)
 		return (ft_strncmp(str1, str2, len1));
 	else
 		return ((int)(len1 - len2));
-		
 }
 
 /* ************************************************************************** */

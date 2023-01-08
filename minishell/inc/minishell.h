@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 16:59:27 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 20:34:35 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@
 # include <readline/readline.h>	// readline(), 
 # include <readline/history.h>	// add_history(),
 
-# include "../my_lib/inc/libft.h"
-# include "../my_lib/inc/my_str.h"
+# include "../my_lib/inc/improved_libft.h"
 # include "ascii_art.h"
 
 /* ************************************************************************** */
@@ -211,10 +210,6 @@ void		initialize_var_lst(t_var_lst *var_lst);
 void		clear_var_lst(t_var_lst *var_lst);
 void		push_envp_to_var_lst(char **envp, t_var_lst *var_list);
 
-//		safe_malloc.c
-void		*malloc_safe(size_t size);
-void		*calloc_safe(size_t count, size_t size);
-
 //		start_shell.c
 void		start_shell(char **envp);
 void		print_banner(void);
@@ -224,8 +219,6 @@ void		signal_handler(int signo);
 
 //		utils_for_test.c
 void		print_token_list(t_tkn_lst *lst);
-
-
 
 /* ************************************************************************** */
 //	tokenize
@@ -240,6 +233,7 @@ bool		is_meta_char(unsigned char c);
 //		tokenize_2.c
 size_t		push_operator(t_tkn_lst *lst, char *str_ptr);
 size_t		push_word(t_tkn_lst *lst, char *str_ptr);
+void		convert_variables(t_tkn_lst *lst);
 
 /* ************************************************************************** */
 

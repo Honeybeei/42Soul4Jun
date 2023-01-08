@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:08:31 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 18:24:23 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 21:56:11 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 void	*my_calloc(size_t count, size_t size)
 {
 	void	*ret;
+
 	ret = ft_calloc(count, size);
 	if (ret == NULL)
 	{
