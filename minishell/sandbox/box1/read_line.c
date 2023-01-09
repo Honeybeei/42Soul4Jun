@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:47:13 by seoyoo            #+#    #+#             */
-/*   Updated: 2022/12/17 14:25:43 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/09 21:03:51 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,18 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-/**
- *  Just checking how does External functions work. In this file, we will check
- *  readline(), rl_clear_history(), rl_on_new_line(), rl_replace_line(),
- *  rl_redisplay(), add_history()
- */
-int main(void)
+int main(int argc, char **argv)
 {
-	char    *read_line_result;
-	
-	while (true)
+	(void)argc;
+	int i;
+	i = 0;
+	while (argv[i] != NULL)
 	{
-		read_line_result = readline("Type : ");
-		if (read_line_result == NULL)
-			break ;
-		printf("User typed -> [%s]\n", read_line_result);
-		// from here : this code prevents to save empty line in history. 
-		if (read_line_result != NULL && read_line_result[0] != '\0') 
-			add_history(read_line_result);
-		// end :
-		free(read_line_result); // must free this malloced string from readline()
+		printf("%d : %s\n", i, argv[i]);
+		i++;
 	}
-	
+	char *temp = NULL;
+	free(temp);
+		
 	return 0; 
 }

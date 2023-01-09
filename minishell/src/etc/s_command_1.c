@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:56:10 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/09 14:49:11 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/09 21:03:27 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_cmd_nd	*create_cmd_nd(void)
 	t_cmd_nd	*new_node;
 
 	new_node = my_calloc(1, sizeof(t_cmd_nd));
-	new_node->pid_ = 0;
 	new_node->type_ = cmd_non_type_;
 	new_node->fd_read_ = STDIN_FILENO;
 	new_node->fd_write_ = STDOUT_FILENO;
@@ -45,7 +44,6 @@ void	terminate_cmd_nd(t_cmd_nd *del_nd)
 	if (del_nd == NULL)
 		return ;
 	free(del_nd->cmd_path_);
-	free(del_nd->arg_str_);
 	i = 0;
 	if (del_nd->args_ != NULL)
 	{

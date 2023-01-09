@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/09 15:12:22 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/09 21:36:18 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,11 @@ typedef struct s_quote_flags
 
 //	TOKEN
 
-// If operation token type is modified, push_operator() in tokenize_2.c should
-// also be modified. Also define part of this file which saves the char of 
-// operators should be modified. 
+/**
+ * If operation token type is modified, push_operator() in tokenize_2.c should 
+ * also be modified. Also define part of this file which saves the char of 
+ * operators should be modified. 
+ */
 typedef enum e_token_type
 {
 	none_ = 0,			//	init value
@@ -101,7 +103,10 @@ typedef enum e_token_type
 	op_redirect_out_2_,	// 	'>>'
 	etc_ = -1			
 }	t_t_type;
-
+/**
+ * '|' -> delimiter between commands. ';' can be a delimiter of command in 
+ * bash. However, in this project, ';' will not be handled. 
+ */
 typedef struct s_token_node
 {
 	char				*val_;
@@ -117,7 +122,6 @@ typedef struct s_token_list
 	size_t		tkn_cnt_;
 }	t_tkn_lst;
 
-
 /* ************************************************************************** */
 
 //	CMD
@@ -132,10 +136,8 @@ typedef enum e_command_type
 
 typedef struct s_command_node
 {
-	pid_t					pid_;
 	t_cmd_type				type_;
 	char					*cmd_path_;
-	char					*arg_str_;
 	char					**args_;
 	int						fd_read_;
 	int						fd_write_;
@@ -186,6 +188,8 @@ typedef struct s_variable_list
 }	t_var_lst;
 
 /* ************************************************************************** */
+
+//	t_ptrs : Global variable
 
 typedef struct s_minishell_pointers
 {
