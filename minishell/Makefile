@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/09 12:44:03 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/09 15:14:18 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,7 @@ ETC_SRC_DIR = $(SRC_DIR)$(ETC_DIR)
 ETC_SRC_FILE = \
 		clear_and_termination.c \
 		error_handler.c \
+		s_command_1.c \
 		s_token_1.c \
 		s_variable_1.c \
 		s_variable_2.c \
@@ -92,6 +93,23 @@ ETC_OBJ_DIR = $(OBJ_DIR)$(ETC_DIR)
 ETC_OBJ_FILE = $(ETC_SRC_FILE:.c=.o)
 ETC_OBJS = $(addprefix $(ETC_OBJ_DIR), $(ETC_OBJ_FILE))
 OBJS_WITHOUT_MAIN += $(ETC_OBJS)
+
+# **************************************************************************** #
+
+# parsing
+
+PARSING_DIR = parsing/
+
+PARSING_SRC_DIR = $(SRC_DIR)$(PARSING_DIR)
+PARSING_SRC_FILE = \
+		parsing_1.c
+
+PARSING_SRCS = $(addprefix $(PARSING_SRC_DIR), $(PARSING_SRC_FILE))
+
+PARSING_OBJ_DIR = $(OBJ_DIR)$(PARSING_DIR)
+PARSING_OBJ_FILE = $(PARSING_SRC_FILE:.c=.o)
+PARSING_OBJS = $(addprefix $(PARSING_OBJ_DIR), $(PARSING_OBJ_FILE))
+OBJS_WITHOUT_MAIN += $(PARSING_OBJS)
 
 # **************************************************************************** #
 
@@ -134,6 +152,10 @@ $(MAIN_FUNCTION_OBJ_DIR)%.o : $(MAIN_FUNCTION_SRC_DIR)%.c
 
 $(ETC_OBJ_DIR)%.o : $(ETC_SRC_DIR)%.c
 	@mkdir -p $(ETC_OBJ_DIR)
+	$(COMPILE) -c $< -o $@
+
+$(PARSING_OBJ_DIR)%.o : $(PARSING_SRC_DIR)%.c
+	@mkdir -p $(PARSING_OBJ_DIR)
 	$(COMPILE) -c $< -o $@
 
 $(TOKENIZE_OBJ_DIR)%.o : $(TOKENIZE_SRC_DIR)%.c

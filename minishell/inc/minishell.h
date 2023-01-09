@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/09 13:19:30 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/09 15:12:22 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_quote_flags
 typedef enum e_token_type
 {
 	none_ = 0,			//	init value
-	wd_,	// initial value of word
+	wd_,				//	initial value of word
 	op_pipe_,			//	'|'
 	op_redirect_in_1_,	// 	'<'
 	op_redirect_in_2_,	// 	'<<'
@@ -124,10 +124,35 @@ typedef struct s_token_list
 
 typedef enum e_command_type
 {
-	built_in_cmd_ = 0,
-	executable_cmd_,
+	cmd_non_type_ = 0,
+	cmd_built_in_,
+	cmd_executable_,
 	cmd_type_err_ = -1
 }	t_cmd_type;
+
+typedef struct s_command_node
+{
+	pid_t					pid_;
+	t_cmd_type				type_;
+	char					*cmd_path_;
+	char					*arg_str_;
+	char					**args_;
+	int						fd_read_;
+	int						fd_write_;
+	struct s_command_node	*next_;
+	struct s_command_node	*prev_;
+}	t_cmd_nd;
+
+typedef struct s_command_list
+{
+	t_cmd_nd	*head_;
+	t_cmd_nd	*tail_;
+	size_t		cmd_cnt_;
+}	t_cmd_lst;
+
+/* ************************************************************************** */
+
+//	PIPE
 
 typedef enum e_pipe_end
 {
@@ -135,29 +160,11 @@ typedef enum e_pipe_end
 	P_READ_ = 0
 }	t_p_end;
 
-typedef struct s_command
-{
-	pid_t		pid_;
-	t_cmd_type	type_;
-	char		*cmd_path_;
-	char		**args_;
-	int			fd_r_;
-	int			fd_w_;
-}	t_cmd;
-
 typedef struct s_pipe
 {
-	int		fd_[2];
-	t_cmd	*cmd_to_read_;
-	t_cmd	*cmd_to_write_;
+	int	fd_[2];
 }	t_pipe;
 
-typedef struct s_command_array
-{
-	t_cmd	*arr_;
-	size_t	cmd_cnt_;
-	t_pipe	*pipe_arr_;
-}	t_cmd_arr;
 
 /* ************************************************************************** */
 
@@ -187,7 +194,9 @@ typedef struct s_minishell_pointers
 	int			exit_status_;
 	t_var_lst	var_lst_;
 	t_tkn_lst	tkn_lst_;
-
+	t_cmd_lst	cmd_lst_;
+	t_pipe		*pipe_arr_;
+	size_t		pipe_cnt_;
 }   t_ptrs;
 
 t_ptrs g_ptrs;
@@ -203,6 +212,13 @@ void		clear_loop(void);
 void		set_t_errno(t_errno error_number);
 void		print_error(t_errno error_number);
 void		error_handler(t_errno error_number, bool reset_errno);
+
+//		s_command_1.c
+t_cmd_nd	*create_cmd_nd(void);
+void		terminate_cmd_nd(t_cmd_nd *del_nd);
+void		push_cmd_nd_to_lst(t_cmd_lst *cmd_lst, t_cmd_nd *nd_to_push);
+void		initialize_cmd_lst(t_cmd_lst *cmd_lst);
+void		clear_cmd_lst(t_cmd_lst *cmd_lst);
 
 //		s_token_1.c
 void		initialize_tkn_lst(t_tkn_lst *tkn_lst);
@@ -229,8 +245,16 @@ void		signal_handler(int signo);
 
 //		utils_for_test.c
 void		print_token_list(t_tkn_lst *lst);
+/* ************************************************************************** */
+
+//	parsing
+
+//		parsing_1.c
+void		parse_token_list(t_tkn_lst *tkn_lst, t_cmd_lst *cmd_lst);
+
 
 /* ************************************************************************** */
+
 //	tokenize
 
 //		tokenize_1.c

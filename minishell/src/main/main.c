@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:28:55 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 21:28:34 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/09 15:15:04 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int	main(int argc, char **argv, char **envp)
 	start_shell(envp);
 	while (true)
 	{
-		tokenize_input(&g_ptrs.tkn_lst_); // in progress
+		tokenize_input(&g_ptrs.tkn_lst_);
+		print_token_list(&g_ptrs.tkn_lst_);
+		parse_token_list(&g_ptrs.tkn_lst_, &g_ptrs.cmd_lst_);
 		// if (parse_tokens() == fail_)
 		// 	error_management();
 		// else

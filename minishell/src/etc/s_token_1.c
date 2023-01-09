@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:14:15 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 18:35:27 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/09 14:44:29 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	clear_tkn_lst(t_tkn_lst *tkn_lst)
 		tkn_lst->head_ = tkn_lst->head_->next_;
 		terminate_tkn_nd(del_nd);
 	}
-	tkn_lst->tkn_cnt_ = 0;
+	initialize_tkn_lst(tkn_lst);
 }
 
 /* ************************************************************************** */

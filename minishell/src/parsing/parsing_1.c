@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_and_termination.c                            :+:      :+:    :+:   */
+/*   parsing_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 15:03:53 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/09 15:06:50 by seoyoo           ###   ########.fr       */
+/*   Created: 2023/01/09 14:52:11 by seoyoo            #+#    #+#             */
+/*   Updated: 2023/01/09 15:14:43 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,29 @@
 
 /* ************************************************************************** */
 
-/**
- * @brief Terminate malloced data(tkn_nd, cmd_nd and pipe array). Variables will
- *  not be initialized in this function. 
- * 
- */
-void	clear_loop(void)
+void	parse_token_list(t_tkn_lst *tkn_lst, t_cmd_lst *cmd_lst)
 {
-	g_ptrs.errno_ = 0;
-	clear_tkn_lst(&g_ptrs.tkn_lst_);
-	clear_cmd_lst(&g_ptrs.cmd_lst_);
-	if (g_ptrs.pipe_arr_ != NULL)
-		free(g_ptrs.pipe_arr_);
-	g_ptrs.pipe_cnt_ = 0;
-	// ADD MORE
+	(void)tkn_lst;
+	(void)cmd_lst;
+	// // size_t	expected_cmd_cnt;
+
+	// expected_cmd_cnt  // TODO!!!!
 }
 
 /* ************************************************************************** */
 
-void	termination_ptcl(void)
-{
-	// ERROR management should be handled. 
-	
-}
+
 
 /* ************************************************************************** */
 
-/* ************************************************************************** */
+
 
 /* ************************************************************************** */
+
+
+
+/* ************************************************************************** */
+
+
 
 /* ************************************************************************** */
