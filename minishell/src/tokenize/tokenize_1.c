@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:26:22 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 23:03:32 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/09 13:33:47 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 /* ************************************************************************** */
 
+// readline function returns NULL when EOF enters. -> should be handled at else.
+
+/**
+ * @brief Tokenize user input from readline(). This process includes splitting, 
+ * variable conversion and deleting actual quotation marks. 
+ * 
+ * @param lst 
+ */
 void	tokenize_input(t_tkn_lst *lst)
 {
 	char	*user_input;
@@ -21,28 +29,29 @@ void	tokenize_input(t_tkn_lst *lst)
 	user_input = readline(PROMPT_STR_);
 	if (user_input != NULL)
 	{
-		printf("user input : [%s]\n", user_input);  // TEST
 		split_input_to_tokens(user_input, lst);
-		print_token_list(lst);  // TEST
 		convert_variables(lst);
-		print_token_list(lst);  // TEST
-		convert_quoted_strings();	//	TODO
+		convert_quoted_strings(lst);
 		free(user_input);
 	}
 	else
 	{
-		// readline function returns NULL when EOF enters. -> should be handled here.
-		printf("user input : NULL -> EOF\n");  // TEST
+		printf("user input : NULL -> EOF\n");
 	}
 }
 
 /* ************************************************************************** */
 
-// split string by using meta-character as an delimeter. 
+/**
+ * @brief Split string by using meta-character as an delimeter. 
+ * 
+ * @param user_input 
+ * @param lst 
+ */
 void	split_input_to_tokens(char *user_input, t_tkn_lst *lst)
 {
 	size_t	i;
-	
+
 	i = 0;
 	while (user_input[i] != '\0')
 	{
@@ -57,6 +66,13 @@ void	split_input_to_tokens(char *user_input, t_tkn_lst *lst)
 
 /* ************************************************************************** */
 
+/**
+ * @brief Returns true when c(param1) is a white space character. 
+ * 
+ * @param c 
+ * @return true 
+ * @return false 
+ */
 bool	is_white_space(unsigned char c)
 {
 	if (('\t' <= c && c <= '\r') || c == ' ')
@@ -66,6 +82,13 @@ bool	is_white_space(unsigned char c)
 
 /* ************************************************************************** */
 
+/**
+ * @brief Returns true when c(param1) is a operational character.
+ * 
+ * @param c 
+ * @return true 
+ * @return false 
+ */
 bool	is_operator(unsigned char c)
 {
 	if (ft_strchr(OPERATIONAL_CHAR_, c) == NULL)
@@ -75,9 +98,17 @@ bool	is_operator(unsigned char c)
 
 /* ************************************************************************** */
 
+/**
+ * @brief Returns true when c(param1) is a meta character.
+ * 
+ * @param c 
+ * @return true 
+ * @return false 
+ */
 bool	is_meta_char(unsigned char c)
 {
-	if (is_white_space(c) == true || is_operator(c) == true || ft_strchr(ETC_META_CHAR_, c) != NULL)
+	if (is_white_space(c) == true || is_operator(c) == true
+		|| ft_strchr(ETC_META_CHAR_, c) != NULL)
 		return (true);
 	return (false);
 }

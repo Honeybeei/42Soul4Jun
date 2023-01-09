@@ -6,7 +6,7 @@
 #    By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 14:29:41 by seoyoo            #+#    #+#              #
-#    Updated: 2023/01/08 21:13:23 by seoyoo           ###   ########.fr        #
+#    Updated: 2023/01/09 12:44:03 by seoyoo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,8 @@ TOKENIZE_DIR = tokenize/
 TOKENIZE_SRC_DIR = $(SRC_DIR)$(TOKENIZE_DIR)
 TOKENIZE_SRC_FILE = \
 		tokenize_1.c \
-		tokenize_2.c
+		tokenize_2.c \
+		tokenize_3.c
 
 TOKENIZE_SRCS = $(addprefix $(TOKENIZE_SRC_DIR), $(TOKENIZE_SRC_FILE))
 

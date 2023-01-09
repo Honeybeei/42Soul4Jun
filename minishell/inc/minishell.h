@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:26:08 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/09 10:47:57 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/09 13:19:30 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,6 @@ typedef enum e_flag
 	down_ = 1
 }	t_flag;
 
-typedef enum e_quotation_mark_for_array
-{
-	double_q_ = 0,
-	single_q_
-}	t_quote_arr;
-
-typedef enum e_direction_for_array
-{
-	start_ = 0,
-	end_
-}	t_dir_arr;
-
 /* ************************************************************************** */
 
 // FUUUCCCCKKKKING IMPORTANT!!
@@ -83,6 +71,16 @@ typedef enum e_direction_for_array
   * 
   */
 
+
+/* ************************************************************************** */
+
+//	typedefs for tokenize
+
+typedef struct s_quote_flags
+{
+	t_flag	double_q_;
+	t_flag	single_q_;
+}	t_q_flg;
 
 
 /* ************************************************************************** */
@@ -246,6 +244,9 @@ bool		is_meta_char(unsigned char c);
 size_t		push_operator(t_tkn_lst *lst, char *str_ptr);
 size_t		push_word(t_tkn_lst *lst, char *str_ptr);
 void		convert_variables(t_tkn_lst *lst);
+
+//		tokenize_3.c
+void		convert_quoted_strings(t_tkn_lst *lst);
 
 /* ************************************************************************** */
 
