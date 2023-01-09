@@ -6,7 +6,7 @@
 /*   By: seoyoo <seoyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:26:22 by seoyoo            #+#    #+#             */
-/*   Updated: 2023/01/08 22:15:24 by seoyoo           ###   ########.fr       */
+/*   Updated: 2023/01/08 23:03:32 by seoyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	tokenize_input(t_tkn_lst *lst)
 		print_token_list(lst);  // TEST
 		convert_variables(lst);
 		print_token_list(lst);  // TEST
-		// convert_quoted_strings();	//	TODO
+		convert_quoted_strings();	//	TODO
 		free(user_input);
 	}
 	else
 	{
-		// readline function returns NULL when EOF enters. 
+		// readline function returns NULL when EOF enters. -> should be handled here.
 		printf("user input : NULL -> EOF\n");  // TEST
 	}
 }
